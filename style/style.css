@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+}
+
+#board {
+  height: 100vh;
+  min-height: 500px;
+  width: 100vh;
+  min-width: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightsalmon;
+}
+
+#board-top {
+  height: 25%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /*background-color: red;*/
+}
+
+#cardCenter4 {
+  background: url("../images/TriangleGreen.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+}
+
+#board-middle {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#board-left {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*background-color: blue;*/
+}
+
+#cardCenter1 {
+  background: url("../images/CrossYellow.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+}
+
+#board-center {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*background-color: yellow;*/
+}
+
+#board-right {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*background-color: lightblue;*/
+}
+
+#cardCenter3 {
+  background: url("../images/CircleBlue.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+}
+
+#board-bottom {
+  height: 25%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /*background-color: green;*/
+}
+
+#my-canvas {
+  height: 100vh;
+  width: 100vh;
+  position: absolute;
+}
+
+#cardCenter2 {
+  background: url("../images/SquareRed.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+}
+
+
+
+
+/*pruebas*/
+
+h1 {
+  margin: 0
+}
