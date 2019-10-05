@@ -2,14 +2,21 @@ class IronSpeed {
   constructor() {
     this.deck = deck
     this.player1 = new PlayerHuman(1,this, Z_KEY, X_KEY,)
-    /*this.player2 = new PlayerComputer(2, this)*/
-    this.player3 = new PlayerHuman(2, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    this.player2 = new PlayerHuman(2, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    /*this.player3 = new PlayerComputer(3, this)*/
     /*this.player4 = new PlayerComputer(4, this)*/
-    this.players = [this.player1, /*this.player2,*/ this.player3, /*this.player4*/]
+    this.players = [this.player1, this.player2/*, this.player3, this.player4*/]
     this.turn = 1
     this.firstDisc = 0
     this.propCheck = "form"
+    this._setCounterCards()
   }
+
+  _setCounterCards() {
+    for (let i = 0; i < this.players.length; i++) {
+      document.getElementById(`counterCards${this.players[i].id}`).innerText = `${this.players[i].playerCards.length}`
+    }
+  } 
 
   dealCards() {
     while (this.deck.length > 0) {
@@ -53,16 +60,18 @@ class IronSpeed {
     }
     /// checkPlayer loses ///
     if (loserPlayers.length === 0) {
-      for (i = 0; i < this.players.length; i++) {
-        this._addCardsLoser(id, i)
+      for (let i = 0; i < this.players.length; i++) {
+        this._addCardsLoser(id, i + 1)
       }
-      console.log(`player${id} loses`)
+      this.turn = id
+      console.log(`mistake player${id}, loses the duel`)
+      return
     } 
     /// checkPlayer wins ///
     else if (loserPlayers.length > 0) {
       let currentPlayer = id
       const _nextLoserPlayer = () => {
-        if(id > this.players.length) {
+        if(id >= this.players.length) {
           currentPlayer = 1
         } else {
           currentPlayer++
@@ -74,13 +83,22 @@ class IronSpeed {
         }
         _nextLoserPlayer()
       }
-      console.log(`player${id} vs players: ${loserPlayers}`)
-      console.log(`player${id} wins`)
+
+      /*let currentPlayer = id                        ////////¿?¿?¿?¿Asignar turno a primer perdedor después de ganador?¿?¿?¿?¿?
+      if(loserPlayers.includes(currentPlayer)) {
+        this.turn = currentPlayer
+      } else {
+        continue
+      }*/
+
+          console.log(`player${id} vs players:${loserPlayers} | player${id} wins the duel`)
+      return
     }
   }
 
   duel() {
     this._checkCards(this.firstDisc, this.propCheck)
+    console.log(`turn player${this.turn}`)
     /*this.firstDisc = 0*/
   }
 

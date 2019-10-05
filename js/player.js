@@ -11,9 +11,16 @@ class Player {
 
   throwCard() {
     if (this.game.turn === this.id) {
+      this.game.firstDisc = 0
+      if (this.playerCards.length === 0){
+        console.log(`player${this.id} wins`)
+        return
+      }
       let card = this.playerCards.pop()
       this.centerCards.unshift(card)
       this.game.incrementTurn()
+    } else {
+      console.log(`player${this.id} isn't your turn`)
     }
   }
 
