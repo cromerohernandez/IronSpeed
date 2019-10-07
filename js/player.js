@@ -18,6 +18,7 @@ class Player {
       }
       let card = this.playerCards.pop()
       this.centerCards.unshift(card)
+      this.game.setCounterCards()
       this.game.incrementTurn()
     } else {
       console.log(`player${this.id} isn't your turn`)

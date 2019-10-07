@@ -9,10 +9,10 @@ class IronSpeed {
     this.turn = 1
     this.firstDisc = 0
     this.propCheck = "form"
-    this._setCounterCards()
+    this.setCounterCards()
   }
 
-  _setCounterCards() {
+  setCounterCards() {
     for (let i = 0; i < this.players.length; i++) {
       document.getElementById(`counterCards${this.players[i].id}`).innerText = `${this.players[i].playerCards.length}`
     }
@@ -26,6 +26,7 @@ class IronSpeed {
         this.deck.splice(n, 1)
       }
     }
+    this.setCounterCards()
   }
 
   incrementTurn() {
@@ -98,7 +99,8 @@ class IronSpeed {
 
   duel() {
     this._checkCards(this.firstDisc, this.propCheck)
-    console.log(`turn player${this.turn}`)
+    this.setCounterCards()
+    console.log(`player${this.turn} is your turn`)
     /*this.firstDisc = 0*/
   }
 
