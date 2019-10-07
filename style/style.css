@@ -28,7 +28,7 @@ body {
 }
 
 #cardCenter4 {
-  background: url("../images/TriangleGreen.png");
+  background: url('');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
@@ -51,7 +51,7 @@ body {
 }
 
 #cardCenter1 {
-  background: url("../images/CrossYellow.png");
+  background: url('');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
@@ -75,7 +75,7 @@ body {
 }
 
 #cardCenter3 {
-  background: url("../images/CircleBlue.png");
+  background: url('');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
@@ -96,10 +96,11 @@ body {
   height: 100vh;
   width: 100vh;
   position: absolute;
+  /*z-index: 50;*/
 }
 
 #cardCenter2 {
-  background: url("../images/SquareRed.png");
+  background: url('');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;

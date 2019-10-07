@@ -6,6 +6,14 @@ class PlayerHuman extends Player {
     this._setListeners()
   }
 
+  updateCurrentCard(){
+    super.updateCurrentCard()
+  }
+
+  updateCounterCards() {
+    super.updateCounterCards()
+  }
+
   throwCard() {
     super.throwCard()
   }
@@ -19,8 +27,6 @@ class PlayerHuman extends Player {
       if (e.keyCode === this.cardKey) {
         console.log(`cardKey player${this.id}`)
         this.throwCard()
-        document.getElementById(`cardCenter${this.id}`).style.background = `url("images/${this.centerCards[0].img}")`
-        document.getElementById(`cardCenter${this.id}`).style.backgroundSize = 'cover'
       } else if (e.keyCode === this.discKey) {
         console.log(`discKey player${this.id}`)
         this.throwDisc()

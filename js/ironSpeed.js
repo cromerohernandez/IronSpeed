@@ -1,5 +1,5 @@
 class IronSpeed {
-  constructor() {
+  constructor(ctx) {
     this.deck = deck
     this.player1 = new PlayerHuman(1,this, Z_KEY, X_KEY,)
     this.player2 = new PlayerHuman(2, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
@@ -9,15 +9,25 @@ class IronSpeed {
     this.turn = 1
     this.firstDisc = 0
     this.propCheck = "form"
-    this.setCounterCards()
+    this.upground = new Upground(ctx)
+  }
+  
+  _updateAllCurrentsCards() {
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].centerCards.length === 0) {
+        document.getElementById(`cardCenter${this.players[i].id}`).style.background = `url('')`
+      } else if (this.players[i].centerCards.length > 0) {
+        this.players[i].updateCurrentCard()
+      }
+    }
   }
 
-  setCounterCards() {
+  _updateAllCountersCards() {
     for (let i = 0; i < this.players.length; i++) {
-      document.getElementById(`counterCards${this.players[i].id}`).innerText = `${this.players[i].playerCards.length}`
+      this.players[i].updateCounterCards()
     }
-  } 
-
+  }
+  
   dealCards() {
     while (this.deck.length > 0) {
       for (let i = 0; i < this.players.length; i++) {
@@ -26,7 +36,8 @@ class IronSpeed {
         this.deck.splice(n, 1)
       }
     }
-    this.setCounterCards()
+    this._updateAllCurrentsCards()
+    this._updateAllCountersCards()
   }
 
   incrementTurn() {
@@ -72,7 +83,7 @@ class IronSpeed {
     else if (loserPlayers.length > 0) {
       let currentPlayer = id
       const _nextLoserPlayer = () => {
-        if(id >= this.players.length) {
+        if(currentPlayer >= this.players.length) {
           currentPlayer = 1
         } else {
           currentPlayer++
@@ -84,22 +95,28 @@ class IronSpeed {
         }
         _nextLoserPlayer()
       }
+      for (let i = 0; i < loserPlayers.length; i++) {
+        let j = loserPlayers[i]
+        this._addCardsLoser(j, j)
+      }
+      console.log(`player${id} vs players:${loserPlayers} | player${id} wins the duel`)
 
-      /*let currentPlayer = id                        ////////¿?¿?¿?¿Asignar turno a primer perdedor después de ganador?¿?¿?¿?¿?
-      if(loserPlayers.includes(currentPlayer)) {
-        this.turn = currentPlayer
+      /*let nextTurn = id + 1                        ////////¿¿¿Asignar a primer perdedor después de ganador???
+      if(loserPlayers.includes(nextTurn)) {
+        this.turn = nextTurn
+        return
       } else {
-        continue
+        _nextLoserPlayer(nextTurn)
       }*/
 
-          console.log(`player${id} vs players:${loserPlayers} | player${id} wins the duel`)
       return
     }
   }
 
   duel() {
     this._checkCards(this.firstDisc, this.propCheck)
-    this.setCounterCards()
+    this._updateAllCurrentsCards()
+    this._updateAllCountersCards()
     console.log(`player${this.turn} is your turn`)
     /*this.firstDisc = 0*/
   }

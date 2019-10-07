@@ -3,6 +3,14 @@ class PlayerComputer extends Player {
     super(id, game)
   }
 
+  updateCurrentCard(){
+    super.updateCurrentCard()
+  }
+
+  updateCounterCards() {
+    super.updateCounterCards()
+  }
+
   throwCard() {
     /*pendiente delay*/
     super.throwCard()
