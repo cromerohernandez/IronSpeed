@@ -1,11 +1,12 @@
 class Player {
-  constructor(id, game) {
+  constructor(id, discX, discY, game) {
     /*this.ctx = ctx*/
     this.id = id
     /*this.name = name*/
     /*this.color*/
     this.playerCards = []
     this.centerCards = []
+    this.disc = new Disc(ctx, discX, discY)
     this.game = game
   }
 

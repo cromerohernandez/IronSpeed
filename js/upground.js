@@ -1,12 +1,12 @@
 class Upground {
-  constructor(ctx) {
+  constructor(ctx, discs) {
     this.ctx = ctx
-    this.disc1 = new Disc(ctx)
+    this.discs = discs
   }
 
   run() {
     /*this._clear()*/
-    this._draw()
+    setInterval(() => this._draw(), 1000/60)
     /*this._move()*/
   }
 
@@ -15,7 +15,7 @@ class Upground {
   }
 
   _draw() {
-    this.disc1.draw()
+    this.discs.forEach(disc => disc.draw())
   }
 
   _move() {

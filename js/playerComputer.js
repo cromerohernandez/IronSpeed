@@ -1,6 +1,6 @@
 class PlayerComputer extends Player {
-  constructor(id, game) {
-    super(id, game)
+  constructor(id, discX, discY, game) {
+    super(id, discX, discY, game)
   }
 
   updateCurrentCard(){
@@ -12,8 +12,9 @@ class PlayerComputer extends Player {
   }
 
   throwCard() {
-    /*pendiente delay*/
-    super.throwCard()
+    /*if (this.game.turn === this.id){
+      setTimeout(() => {super.throwCard()}, 2000)
+    }*/
   }
 
   throwDisc(){

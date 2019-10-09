@@ -1,15 +1,15 @@
 class IronSpeed {
   constructor(ctx) {
     this.deck = deck
-    this.player1 = new PlayerHuman(1,this, Z_KEY, X_KEY,)
-    this.player2 = new PlayerHuman(2, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
-    /*this.player3 = new PlayerComputer(3, this)*/
-    /*this.player4 = new PlayerComputer(4, this)*/
-    this.players = [this.player1, this.player2/*, this.player3, this.player4*/]
+    this.player1 = new PlayerHuman(1, 100, 300, this, Z_KEY, X_KEY,)
+    this.player2 = new PlayerComputer(2, 200, 400, this)
+    this.player3 = new PlayerHuman(3, 300, 300, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    this.player4 = new PlayerComputer(4, 200, 200, this)
+    this.players = [this.player1, this.player2, this.player3, this.player4]
     this.turn = 1
     this.firstDisc = 0
     this.propCheck = "form"
-    this.upground = new Upground(ctx)
+    this.upground = new Upground(ctx, this.players.map(player => player.disc))
   }
   
   _updateAllCurrentsCards() {
