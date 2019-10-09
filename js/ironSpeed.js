@@ -1,10 +1,10 @@
 class IronSpeed {
   constructor(ctx) {
     this.deck = deck
-    this.player1 = new PlayerHuman(1, 100, 300, this, Z_KEY, X_KEY,)
-    this.player2 = new PlayerComputer(2, 200, 400, this)
-    this.player3 = new PlayerHuman(3, 300, 300, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
-    this.player4 = new PlayerComputer(4, 200, 200, this)
+    this.player1 = new PlayerHuman(1, -(DISC_SIZE*3/4), (window.innerHeight/2 - DISC_SIZE/2), "blue", this, Z_KEY, X_KEY,)
+    this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), (window.innerHeight - DISC_SIZE/4), "green", this)
+    this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE/4), (window.innerHeight/2 - DISC_SIZE/2), "red", this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), -(DISC_SIZE*3/4), "yellow", this)
     this.players = [this.player1, this.player2, this.player3, this.player4]
     this.turn = 1
     this.firstDisc = 0

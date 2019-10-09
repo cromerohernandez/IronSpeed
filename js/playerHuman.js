@@ -1,6 +1,7 @@
 class PlayerHuman extends Player {
-  constructor(id, discX, discY, game, cardKey, discKey,) {
-    super(id, discX, discY, game)
+  constructor(id, discX, discY, discColor, game, cardKey, discKey,) {
+    super(id, discX, discY, discColor, game)
+    this.typePlayer = "human"
     this.cardKey = cardKey
     this.discKey = discKey
     this._setListeners()
@@ -19,7 +20,8 @@ class PlayerHuman extends Player {
   }
 
   throwDisc(){
-    super.throwDisc()
+    /*super.throwDisc()*/
+    this.disc.animate()
   }
 
   _setListeners() {

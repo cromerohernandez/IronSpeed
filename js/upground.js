@@ -2,12 +2,16 @@ class Upground {
   constructor(ctx, discs) {
     this.ctx = ctx
     this.discs = discs
+    this.intervalId = null
   }
 
   run() {
-    /*this._clear()*/
-    setInterval(() => this._draw(), 1000/60)
+
+    this.intervalId = setInterval(() => {
+      this._clear()
+      this._draw()
     /*this._move()*/
+    }, 1000/60)
   }
 
   _clear() {

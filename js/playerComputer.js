@@ -1,6 +1,7 @@
 class PlayerComputer extends Player {
-  constructor(id, discX, discY, game) {
-    super(id, discX, discY, game)
+  constructor(id, discX, discY, discColor, game) {
+    super(id, discX, discY, discColor, game)
+    this.typePlayer = "computer"
   }
 
   updateCurrentCard(){
@@ -12,9 +13,8 @@ class PlayerComputer extends Player {
   }
 
   throwCard() {
-    /*if (this.game.turn === this.id){
-      setTimeout(() => {super.throwCard()}, 2000)
-    }*/
+    const responseTime = (Math.random() * 1000) + 500
+    setTimeout(() => {super.throwCard()}, responseTime)
   }
 
   throwDisc(){
