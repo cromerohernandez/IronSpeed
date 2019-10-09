@@ -1,6 +1,6 @@
 class PlayerComputer extends Player {
-  constructor(id, discX, discY, discColor, game) {
-    super(id, discX, discY, discColor, game)
+  constructor(id, discX, senseDiscX, discY, senseDiscY, discColor, game) {
+    super(id, discX, senseDiscX, discY, senseDiscY, discColor, game)
     this.typePlayer = "computer"
   }
 
