@@ -1,17 +1,21 @@
 class Disc {
-  constructor(ctx, discX, senseDiscX, discY, senseDiscY, discColor) {
+  constructor(ctx, id, discX, senseDiscX, discY, senseDiscY, discColor) {
     this.ctx = ctx
+    this.id = id
     this.w = DISC_SIZE
     this.h = DISC_SIZE
     this.x0 = discX
     this.x= this.x0
-    this.maxX = window.innerHeight/2 - (DISC_SIZE/2)
+    this.maxX = 0
     this.y0 = discY
     this.y = this.y0
+    this.maxY = 0
     this.senseDiscX = senseDiscX
-    this.vx = this.senseDiscX * 30
+    this.vx0 = 30
+    this.vx = this.senseDiscX * this.vx0
     this.senseDiscY = senseDiscY
-    this.vy = this.senseDiscY * 0
+    this.vy0 = 30
+    this.vy = this.senseDiscY * this.vy0
 
     this.img = new Image()
     this.img.src = `./images/IronSpeedDiscSprite-${discColor}.png`
@@ -37,23 +41,28 @@ class Disc {
   }
 
   animate() {
-    this.tick++
-    if (this.tick > 0.5) {
-      this.tick = 0
-      this.img.frameIndex++
-    }
-    if (this.img.frameIndex >= this.img.frames) {
-      this.img.frameIndex = 0
-    }
-    if ((this.senseDiscX > 0) && (this.x >= this.maxX) || (this.senseDiscX < 0) && (this.x <= this.maxX)) {
-      this.img.frameIndex = 0   /*!!!!!!!!!!!!!!random!!!!!!!!!!!!*/
+    if ((this.x > this.x0) && (this.x < this.maxX) || 
+    (this.x < this.x0) && (this.x > this.maxX) ||
+    (this.y > this.y0) && (this.y < this.maxY) || 
+    (this.y < this.y0) && (this.y > this.maxY) ) {
+      this.tick++
+      if (this.tick > 0.5) {
+        this.tick = 0
+        this.img.frameIndex++
+      }
+      if (this.img.frameIndex >= this.img.frames) {
+        this.img.frameIndex = 0
+      }
     }
   }
 
   move() {
     this.x += this.vx
     this.y += this.vy
-    if ((this.vx > 0 && this.x >= this.maxX) || (this.vx < 0 && this.x <= this.maxX)) {
+    if ((this.vx > 0 && this.x >= this.maxX) || 
+    (this.vx < 0 && this.x <= this.maxX) ||
+    (this.vy > 0 && this.y >= this.maxY) || 
+    (this.vy < 0 && this.y <= this.maxY)) {
       this.vx = 0
       this.vy = 0
     }
@@ -62,6 +71,9 @@ class Disc {
   resetDisc() {
     this.x = this.x0
     this.y = this.y0
+    this.tick = 0
     this.img.frameIndex = 0
+    this.vx = this.senseDiscX * this.vx0
+    this.vy = 0
   }
 }

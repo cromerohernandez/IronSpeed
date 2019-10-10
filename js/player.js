@@ -6,7 +6,7 @@ class Player {
     /*this.color*/
     this.playerCards = []
     this.centerCards = []
-    this.disc = new Disc(ctx, discX, senseDiscX, discY, senseDiscY, discColor)
+    this.disc = new Disc(ctx, id, discX, senseDiscX, discY, senseDiscY, discColor)
     this.game = game
   }
 
@@ -31,9 +31,6 @@ class Player {
       this.updateCounterCards()
       this.game.incrementTurn()
       console.log(`PLAYER${this.id} throws a card`)
-      if (this.game.players[this.game.turn-1].typePlayer === "computer") {
-        this.game.players[this.game.turn-1].throwCard()
-      }
       this.game.playNextComputerPlayer()
     } else {
       console.log(`PLAYER${this.id} it´s not your turn`)
@@ -47,6 +44,8 @@ class Player {
       return
     }
     if (!this.game.orderDiscs.includes(this.id)) {
+      this.disc.maxX = ((window.innerHeight / 2) - (3 * DISC_SIZE / 4)) + (Math.random() * (DISC_SIZE / 2))
+      this.disc.maxY = ((window.innerHeight / 2) - (3 * DISC_SIZE / 4)) + (Math.random() * (DISC_SIZE / 2))
       this.game.orderDiscs.push(this.id)
       console.log(`PLAYER${this.id} throws the disc`)
       if (this.game.orderDiscs.length === 1) {

@@ -9,7 +9,7 @@ class IronSpeed {
     this.turn = 1
     this.orderDiscs = []
     this.propCheck = "form"
-    this.upground = new Upground(ctx, this.players.map(player => player.disc), this.orderDiscs)
+    this.upground = new Upground(ctx, this)
   }
   
   _updateAllCurrentsCards() {
@@ -76,16 +76,16 @@ class IronSpeed {
       this.turn = id
       return
     }
-    let loserPlayers = []
+    let losersPlayers = []
     for (let i = 0; i < this.players.length; i++) {
       if (checkPlayer.id !== this.players[i].id) {
         if ((this.players[i].centerCards.length > 0) && (checkPlayer.centerCards[0][prop] === this.players[i].centerCards[0][prop])) {
-          loserPlayers.push(this.players[i].id)
+          losersPlayers.push(this.players[i].id)
         }
       }
     }
     /// checkPlayer loses ///
-    if (loserPlayers.length === 0) {
+    if (losersPlayers.length === 0) {
       for (let i = 0; i < this.players.length; i++) {
         this._addCardsLoser(id, i + 1)
       }
@@ -94,7 +94,7 @@ class IronSpeed {
       return
     } 
     /// checkPlayer wins ///
-    else if (loserPlayers.length > 0) {
+    else if (losersPlayers.length > 0) {
       let currentPlayer = id
       const _nextLoserPlayer = () => {
         if(currentPlayer >= this.players.length) {
@@ -104,33 +104,32 @@ class IronSpeed {
         }
       }
       while(checkPlayer.centerCards.length > 0) {
-        if (loserPlayers.includes(currentPlayer)) {
+        if (losersPlayers.includes(currentPlayer)) {
           this._addSingleCardLoser(currentPlayer, id)
         }
         _nextLoserPlayer()
       }
-      for (let i = 0; i < loserPlayers.length; i++) {
-        let j = loserPlayers[i]
+      for (let i = 0; i < losersPlayers.length; i++) {
+        let j = losersPlayers[i]
         this._addCardsLoser(j, j)
       }
-      console.log(`PLAYER${id} vs PLAYERS:${loserPlayers} | PLAYER${id} wins the duel`)
+      console.log(`PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the duel`)
       
-      
-      let nextTurn = id + 1                            /////////////¡¡¡¡¡¡¡¡revisar!!!!!!!!!!!!!!!!!////////////////////
-      if(loserPlayers.includes(nextTurn)) {
-        this.turn = nextTurn
-        return
-      } else {
-        if(nextTurn > loserPlayers.length) {
+      let nextTurn = id
+      for (let i = 0; i <= this.players.length; i++) {
+        if(nextTurn >= this.players.length) {
           nextTurn = 1
         } else {
           nextTurn++
         }
+        if(losersPlayers.includes(nextTurn)) {
+          this.turn = nextTurn
+          return
+        }
       }
-
-
-      return
+      
     }
+
   }
 
   duel() {

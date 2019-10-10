@@ -1,8 +1,8 @@
 class Upground {
-  constructor(ctx, discs, orderDiscs) {
+  constructor(ctx, game) {
     this.ctx = ctx
-    this.discs = discs
-    this.orderDiscs = orderDiscs
+    this.game = game
+    this.discs = game.players.map(player => player.disc)
     this.intervalId = null
   }
 
@@ -18,21 +18,21 @@ class Upground {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
   }
 
-  _draw() {                                                           /*¿mejorar?*/
+  _draw() {
     for (let i = 0; i < this.discs.length; i++) {
-      if (!this.orderDiscs.includes(this.discs[i].id)) {
+      if (!this.game.orderDiscs.includes(this.discs[i].id)) {
         this.discs[i].draw()
       }
     }
-    if (this.orderDiscs.length > 0) {
-      this.orderDiscs.forEach(order => this.discs[order-1].draw())
-      this.orderDiscs.forEach(order => this.discs[order-1].animate())
+    if (this.game.orderDiscs.length > 0) {
+      this.game.orderDiscs.forEach(order => this.discs[order-1].draw())
+      this.game.orderDiscs.forEach(order => this.discs[order-1].animate())
     }
   }
 
   _move() {
-    if (this.orderDiscs.length > 0) {
-      this.orderDiscs.forEach(order => this.discs[order-1].move())
+    if (this.game.orderDiscs.length > 0) {
+      this.game.orderDiscs.forEach(order => this.discs[order-1].move())
     }
   }
 
