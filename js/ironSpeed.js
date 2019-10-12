@@ -40,16 +40,42 @@ class IronSpeed {
     this._updateAllCountersCards()
   }
 
+  checkAllCardsCenter() {
+    /*for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].playerCards.length > 0) {
+        return
+      }
+    }
+    console.log(`All the cards are in the center. Each player pick up their cards.`)
+    console.log(`PLAYER${this.turn} it´s your turn`)
+    for (let i = 0; i < this.players.length; i++) {
+      this._addCardsLoser(i + 1, i + 1)
+    }
+    this._updateAllCurrentsCards()
+    this._updateAllCountersCards()*/
+  }
+
   incrementTurn() {
     if (this.turn === this.players.length) {
       this.turn = 1
     } else {
     this.turn ++
     }
+    if (this.players[this.turn - 1].playerCards.length === 0) {
+      this.incrementTurn()
+    }
   }
 
-  playNextComputerPlayer() {
-    if (this.players[this.turn-1].typePlayer === "computer") {
+  playDiscsComputersPlayers() {
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].typePlayer === 'computer') {
+        this.players[i].throwDisc()
+      }
+    }
+  }
+
+  playCardNextComputerPlayer() {
+    if (this.players[this.turn-1].typePlayer === 'computer') {
       this.players[this.turn-1].throwCard()
     }
   }
@@ -127,19 +153,35 @@ class IronSpeed {
           return
         }
       }
-      
     }
+  }
 
+  _checkWinner() {
+    let winners = []
+    for (let i = 0; i < this.players.length; i++) {
+      if ((this.players[i].centerCards.length === 0) && (this.players[i].playerCards.length === 0)) {
+        winners.push(this.players[i].id)
+      }
+    }
+    if (winners.length > 0) {
+      this.turn = null
+      winners.forEach(winner => console.log(`player${winner} wins`))
+    }
   }
 
   duel() {
     this._checkCards(this.orderDiscs[0], this.propCheck)
     this._updateAllCurrentsCards()
     this._updateAllCountersCards()
-    this.orderDiscs = []
     this.players.forEach(player => player.disc.resetDisc())
-    console.log(`PLAYER${this.turn} it´s your turn`)
-    this.playNextComputerPlayer()
+    this.orderDiscs = []
+    this._checkWinner()
+    if (this.turn === null) {
+      return
+    } else {
+      console.log(`PLAYER${this.turn} it´s your turn`)
+      this.playCardNextComputerPlayer()
+    }
   }
 
 }

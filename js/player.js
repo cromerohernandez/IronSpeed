@@ -10,28 +10,28 @@ class Player {
     this.game = game
   }
 
-  updateCurrentCard(){
+  updateCurrentCard() {
     document.getElementById(`cardCenter${this.id}`).style.background = `url('images/${this.centerCards[0].img}')`
     document.getElementById(`cardCenter${this.id}`).style.backgroundSize = 'cover'
   }
 
-  updateCounterCards(){
+  updateCounterCards() {
     document.getElementById(`counterCards${this.id}`).innerText = `${this.playerCards.length}`
   }
 
   throwCard() {
-    if ((this.game.turn === this.id) && (this.game.orderDiscs.length === 0)) {
-      if (this.playerCards.length === 0){
-        console.log(`player${this.id} wins`)   /*revisar que gane cuando se quede sin cartas en playerCards y playerCenter?????*/
-        return
-      }
+    if ((this.game.orderDiscs.length === 0) && (this.game.turn === this.id)) {
       let card = this.playerCards.pop()
       this.centerCards.unshift(card)
       this.updateCurrentCard()
       this.updateCounterCards()
       this.game.incrementTurn()
       console.log(`PLAYER${this.id} throws a card`)
-      this.game.playNextComputerPlayer()
+      /*this.game.checkAllCardsCenter()*/
+      this.game.playDiscsComputersPlayers()
+      if (this.game.orderDiscs.length === 0) {
+        this.game.playCardNextComputerPlayer()
+      }
     } else {
       console.log(`PLAYER${this.id} it´s not your turn`)
       console.log(`PLAYER${this.game.turn} it´s your turn`)
@@ -39,7 +39,7 @@ class Player {
   }
 
   throwDisc(){
-    if (this.centerCards.length === 0) {
+    if (this.centerCards.length === 0 || this.game.turn === null) {
       console.log(`PLAYER${this.id} can´t throw the disc now`)
       return
     }

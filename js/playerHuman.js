@@ -7,7 +7,7 @@ class PlayerHuman extends Player {
     this._setListeners()
   }
 
-  updateCurrentCard(){
+  updateCurrentCard() {
     super.updateCurrentCard()
   }
 

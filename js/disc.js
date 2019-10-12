@@ -74,6 +74,6 @@ class Disc {
     this.tick = 0
     this.img.frameIndex = 0
     this.vx = this.senseDiscX * this.vx0
-    this.vy = 0
+    this.vy = this.senseDiscY * this.vy0
   }
 }
