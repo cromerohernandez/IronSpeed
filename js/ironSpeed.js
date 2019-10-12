@@ -40,19 +40,20 @@ class IronSpeed {
     this._updateAllCountersCards()
   }
 
-  checkAllCardsCenter() {
-    /*for (let i = 0; i < this.players.length; i++) {
+  checkAllCardsInCenter() {
+    for (let i = 0; i < this.players.length; i++) {
       if (this.players[i].playerCards.length > 0) {
         return
       }
     }
-    console.log(`All the cards are in the center. Each player pick up their cards.`)
-    console.log(`PLAYER${this.turn} it´s your turn`)
+    console.log(`All the cards are in the center. Each player pick up their cards. ¿¿¿PLAYER1??? start again.`)
     for (let i = 0; i < this.players.length; i++) {
       this._addCardsLoser(i + 1, i + 1)
     }
-    this._updateAllCurrentsCards()
-    this._updateAllCountersCards()*/
+    setTimeout(() => {
+      this._updateAllCurrentsCards()
+      this._updateAllCountersCards()
+    }, 1000)
   }
 
   incrementTurn() {
@@ -61,6 +62,9 @@ class IronSpeed {
     } else {
     this.turn ++
     }
+  }
+
+  checkNextTurn() {
     if (this.players[this.turn - 1].playerCards.length === 0) {
       this.incrementTurn()
     }

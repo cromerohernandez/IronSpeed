@@ -25,9 +25,10 @@ class Player {
       this.centerCards.unshift(card)
       this.updateCurrentCard()
       this.updateCounterCards()
-      this.game.incrementTurn()
       console.log(`PLAYER${this.id} throws a card`)
-      /*this.game.checkAllCardsCenter()*/
+      this.game.checkAllCardsInCenter()
+      this.game.incrementTurn()
+      this.game.checkNextTurn()
       this.game.playDiscsComputersPlayers()
       if (this.game.orderDiscs.length === 0) {
         this.game.playCardNextComputerPlayer()
@@ -46,6 +47,7 @@ class Player {
     if (!this.game.orderDiscs.includes(this.id)) {
       this.disc.maxX = ((window.innerHeight / 2) - (3 * DISC_SIZE / 4)) + (Math.random() * (DISC_SIZE / 2))
       this.disc.maxY = ((window.innerHeight / 2) - (3 * DISC_SIZE / 4)) + (Math.random() * (DISC_SIZE / 2))
+      this.disc.deviation = (Math.random() * 2) - 1
       this.game.orderDiscs.push(this.id)
       console.log(`PLAYER${this.id} throws the disc`)
       if (this.game.orderDiscs.length === 1) {

@@ -16,6 +16,7 @@ class Disc {
     this.senseDiscY = senseDiscY
     this.vy0 = 30
     this.vy = this.senseDiscY * this.vy0
+    this.deviation = 0
 
     this.img = new Image()
     this.img.src = `./images/IronSpeedDiscSprite-${discColor}.png`
@@ -41,10 +42,10 @@ class Disc {
   }
 
   animate() {
-    if ((this.x > this.x0) && (this.x < this.maxX) || 
-    (this.x < this.x0) && (this.x > this.maxX) ||
-    (this.y > this.y0) && (this.y < this.maxY) || 
-    (this.y < this.y0) && (this.y > this.maxY) ) {
+    if ((this.x > this.x0) && (this.x < this.maxX) && (this.senseDiscY === 0) || 
+    (this.x < this.x0) && (this.x > this.maxX) && (this.senseDiscY === 0)  ||
+    (this.y > this.y0) && (this.y < this.maxY) && (this.senseDiscX === 0)  || 
+    (this.y < this.y0) && (this.y > this.maxY) && (this.senseDiscX === 0)  ) {
       this.tick++
       if (this.tick > 0.5) {
         this.tick = 0
@@ -57,14 +58,15 @@ class Disc {
   }
 
   move() {
-    this.x += this.vx
-    this.y += this.vy
+    this.x += (this.vx + (this.senseDiscY * this.deviation))
+    this.y += (this.vy + (this.senseDiscX * this.deviation))
     if ((this.vx > 0 && this.x >= this.maxX) || 
     (this.vx < 0 && this.x <= this.maxX) ||
     (this.vy > 0 && this.y >= this.maxY) || 
     (this.vy < 0 && this.y <= this.maxY)) {
       this.vx = 0
       this.vy = 0
+      this.deviation = 0
     }
   }
 
@@ -75,5 +77,6 @@ class Disc {
     this.img.frameIndex = 0
     this.vx = this.senseDiscX * this.vx0
     this.vy = this.senseDiscY * this.vy0
+    this.deviation = 0
   }
 }
