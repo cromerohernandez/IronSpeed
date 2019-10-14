@@ -15,7 +15,8 @@ class IronSpeed {
   _updateAllCurrentsCards() {
     for (let i = 0; i < this.players.length; i++) {
       if (this.players[i].centerCards.length === 0) {
-        document.getElementById(`cardCenter${this.players[i].id}`).style.background = `url('')`
+        document.getElementById(`cardCenter${this.players[i].id}`).style.background = `url('./images/CardMark.png')`
+        document.getElementById(`cardCenter${this.players[i].id}`).style.backgroundSize = 'cover'
       } else if (this.players[i].centerCards.length > 0) {
         this.players[i].updateCurrentCard()
       }

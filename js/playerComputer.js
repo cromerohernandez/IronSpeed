@@ -20,7 +20,6 @@ class PlayerComputer extends Player {
 
   throwDisc() {
     if (this.centerCards.length > 0) {
-      console.log(this.centerCards.length)
       const propCompare = this.game.propCheck
       let playersCompare = []
       for (let i = 0; i < this.game.players.length; i++) {

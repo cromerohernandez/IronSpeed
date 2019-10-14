@@ -28,7 +28,7 @@ body {
 }
 
 #cardCenter4 {
-  background: url('');
+  background: url('../images/CardMark.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
@@ -51,7 +51,7 @@ body {
 }
 
 #cardCenter1 {
-  background: url('');
+  background: url('../images/CardMark.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
@@ -66,6 +66,10 @@ body {
   /*background-color: yellow;*/
 }
 
+#logo-center {
+  width: 40%;
+}
+
 #board-right {
   width: 25%;
   display: flex;
@@ -75,7 +79,7 @@ body {
 }
 
 #cardCenter3 {
-  background: url('');
+  background: url('../images/CardMark.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
@@ -98,7 +102,7 @@ body {
 }
 
 #cardCenter2 {
-  background: url('');
+  background: url('../images/CardMark.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
