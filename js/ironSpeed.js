@@ -257,7 +257,7 @@ class IronSpeed {
     } else {
       console.log(`PLAYER${this.turn} it´s your turn`)
       let messageTurn = new Message (`PLAYER${this.turn} it´s your turn`, 1500)
-      setTimeout(() => {messageTurn.showMessage()}, 2000)
+      setTimeout(() => {messageTurn.showMessage()}, 3500)
       this.playCardNextComputerPlayer()
     }
   }
