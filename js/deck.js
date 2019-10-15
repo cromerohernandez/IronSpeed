@@ -504,4 +504,60 @@ const deck = [
     type: 'normal'
   },
 
+  {
+    form: 'specialColors1',
+    color: 'color1',
+    img: 'SpecialColors.png',
+    type: 'color'
+  },
+
+  {
+    form: 'specialColors2',
+    color: 'color2',
+    img: 'SpecialColors.png',
+    type: 'color'
+  },
+
+  {
+    form: 'specialColors3',
+    color: 'color3',
+    img: 'SpecialColors.png',
+    type: 'color'
+  },
+
+  {
+    form: 'specialColors4',
+    color: 'color4',
+    img: 'SpecialColors.png',
+    type: 'color'
+  },
+
+  {
+    form: 'specialDiscs1',
+    color: 'disc1',
+    img: 'SpecialDiscs.png',
+    type: 'disc'
+  },
+
+  {
+    form: 'specialDiscs2',
+    color: 'disc2',
+    img: 'SpecialDiscs.png',
+    type: 'disc'
+  },
+
+  {
+    form: 'specialDiscs3',
+    color: 'disc3',
+    img: 'SpecialDiscs.png',
+    type: 'disc'
+  },
+
+  {
+    form: 'specialDiscs4',
+    color: 'disc4',
+    img: 'SpecialDiscs.png',
+    type: 'disc'
+  },
+
 ]

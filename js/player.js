@@ -27,6 +27,7 @@ class Player {
       this.updateCounterCards()
       console.log(`PLAYER${this.id} throws a card`)
       this.game.checkAllCardsInCenter()
+      this.game.updatePropCheck()
       this.game.incrementTurn()
       this.game.checkNextTurn()
       this.game.playDiscsComputersPlayers()

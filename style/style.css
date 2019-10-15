@@ -1,8 +1,10 @@
 body {
   margin: 0;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  background-color: lightgray;
+  background: url('../images/Background.png');
+  background-position: center;
 }
 
 #board {
@@ -14,7 +16,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: lightsalmon;
+  background: url('../images/Board.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-color: #86aab9;*/
 }
 
 #board-top {
@@ -107,6 +112,18 @@ body {
   background-size: cover;
   height: 20vh;
   width: 20vh;
+}
+
+#start {
+  height: 100vh;
+  width: 100vh;
+  position: absolute;
+  background: url('../images/Background.png');
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 

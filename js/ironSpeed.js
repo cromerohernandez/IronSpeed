@@ -1,14 +1,14 @@
 class IronSpeed {
   constructor(ctx) {
     this.deck = deck
-    this.player1 = new PlayerHuman(1, -(DISC_SIZE*3/4), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, "blue", this, Z_KEY, X_KEY,)
-    this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE/4), -1, "green", this)
-    this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE/4), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, "red", this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
-    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*3/4), 1, "yellow", this)
+    this.player1 = new PlayerHuman(1, -(DISC_SIZE*5/6), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, "blue", this, Z_KEY, X_KEY,)
+    this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE/6), -1, "green", this)
+    this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE/6), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, "red", this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*5/6), 1, "yellow", this)
     this.players = [this.player1, this.player2, this.player3, this.player4]
     this.turn = 1
     this.orderDiscs = []
-    this.propCheck = "form"
+    this.propCheck = 'form'
     this.upground = new Upground(ctx, this)
   }
   
@@ -55,6 +55,23 @@ class IronSpeed {
       this._updateAllCurrentsCards()
       this._updateAllCountersCards()
     }, 1000)
+  }
+  
+  updatePropCheck() {
+    let playersCheck = []
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].centerCards.length > 0) {
+        playersCheck.push(this.players[i])
+      }
+    }
+    for (let i = 0; i < playersCheck.length; i++) {
+      if (playersCheck[i].centerCards[0].type === 'color') {
+        this.propCheck = 'color'
+        return
+      } else {
+        this.propCheck = 'form'
+      }
+    }
   }
 
   incrementTurn() {
@@ -144,7 +161,7 @@ class IronSpeed {
         let j = losersPlayers[i]
         this._addCardsLoser(j, j)
       }
-      console.log(`PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the duel`)
+      console.log(`${prop}´s duel | PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the duel`)
       
       let nextTurn = id
       for (let i = 0; i <= this.players.length; i++) {
