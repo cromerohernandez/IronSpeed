@@ -1,5 +1,5 @@
 class Disc {
-  constructor(ctx, id, discX, senseDiscX, discY, senseDiscY, discColor) {
+  constructor(ctx, id, discX, senseDiscX, discY, senseDiscY) {
     this.ctx = ctx
     this.id = id
     this.w = DISC_SIZE
@@ -19,8 +19,8 @@ class Disc {
     this.deviation = 0
 
     this.img = new Image()
-    this.img.src = `./images/IronSpeedDiscSprite-${discColor}.png`
-    this.img.frames = 18
+    this.img.src = `./images/IronSpeedDiscSprite-${this.id}.png`
+    this.img.frames = 12
     this.img.frameIndex = 0
     this.img.onload = () => this.draw()
 
@@ -47,7 +47,7 @@ class Disc {
     (this.y > this.y0) && (this.y < this.maxY) && (this.senseDiscX === 0)  || 
     (this.y < this.y0) && (this.y > this.maxY) && (this.senseDiscX === 0)  ) {
       this.tick++
-      if (this.tick > 0.5) {
+      if (this.tick > 0.4) {
         this.tick = 0
         this.img.frameIndex++
       }

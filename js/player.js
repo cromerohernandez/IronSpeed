@@ -1,12 +1,9 @@
 class Player {
-  constructor(id, discX, senseDiscX, discY, senseDiscY, discColor, game) {
-    /*this.ctx = ctx*/
+  constructor(id, discX, senseDiscX, discY, senseDiscY, game) {
     this.id = id
-    /*this.name = name*/
-    /*this.color*/
     this.playerCards = []
     this.centerCards = []
-    this.disc = new Disc(ctx, id, discX, senseDiscX, discY, senseDiscY, discColor)
+    this.disc = new Disc(ctx, id, discX, senseDiscX, discY, senseDiscY)
     this.game = game
   }
 
@@ -28,11 +25,16 @@ class Player {
       console.log(`PLAYER${this.id} throws a card`)
       this.game.checkAllCardsInCenter()
       this.game.updatePropCheck()
-      this.game.incrementTurn()
-      this.game.checkNextTurn()
-      this.game.playDiscsComputersPlayers()
-      if (this.game.orderDiscs.length === 0) {
-        this.game.playCardNextComputerPlayer()
+      if (this.game.turn === 'discTurn') {
+        this.game.playDiscsComputersPlayers() //
+        setTimeout(() => {this.game.duelDiscs()}, 3000)
+      } else {
+        this.game.incrementTurn()
+        this.game.checkNextTurn()
+        this.game.playDiscsComputersPlayers()
+        if (this.game.orderDiscs.length === 0) {
+          this.game.playCardNextComputerPlayer()
+        }
       }
     } else {
       console.log(`PLAYER${this.id} it´s not your turn`)
@@ -41,7 +43,7 @@ class Player {
   }
 
   throwDisc(){
-    if (this.centerCards.length === 0 || this.game.turn === null) {
+    if ((this.centerCards.length === 0 && this.game.turn !== 'discTurn')|| this.game.turn === null) {
       console.log(`PLAYER${this.id} can´t throw the disc now`)
       return
     }
@@ -51,8 +53,8 @@ class Player {
       this.disc.deviation = (Math.random() * 2) - 1
       this.game.orderDiscs.push(this.id)
       console.log(`PLAYER${this.id} throws the disc`)
-      if (this.game.orderDiscs.length === 1) {
-        setTimeout(() => {this.game.duel()}, 3000)
+      if ((this.game.orderDiscs.length === 1) && (this.game.turn !== 'discTurn')) {
+        setTimeout(() => {this.game.duelCards()}, 3000)
       }
     }
   }

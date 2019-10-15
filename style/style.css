@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
+* {
+  font-family: 'Dosis';
+  font-size: 50px;
+  color: #01384f
+}
+
 body {
   margin: 0;
   display: flex;
@@ -19,7 +27,6 @@ body {
   background: url('../images/Board.png');
   background-repeat: no-repeat;
   background-size: cover;
-  /*background-color: #86aab9;*/
 }
 
 #board-top {
@@ -29,7 +36,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /*background-color: red;*/
 }
 
 #cardCenter4 {
@@ -52,7 +58,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /*background-color: blue;*/
 }
 
 #cardCenter1 {
@@ -68,11 +73,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*background-color: yellow;*/
 }
 
 #logo-center {
-  width: 40%;
+  width: 20vh;
 }
 
 #board-right {
@@ -80,7 +84,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /*background-color: lightblue;*/
 }
 
 #cardCenter3 {
@@ -98,12 +101,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /*background-color: green;*/
 }
 
 #my-canvas {
   position: absolute;
-  /*z-index: 50;*/
 }
 
 #cardCenter2 {
@@ -126,15 +127,34 @@ body {
   justify-content: center;
 }
 
+#screen {
+  height: 100vh;
+  width: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#popMessage {
+  height: 21.6vh;
+  width: 20vh;
+  background: url('../images/popMessageBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-
-/*pruebas*/
-
-h1 {
+#message {
+  font-size: 3.3vh;
+  color: #a3b9c2;
+  text-align: center;
   margin: 0
 }
 
 h3 {
-  margin: 0
+  font-size: 1vh;
+  color: #a3b9c2
 }

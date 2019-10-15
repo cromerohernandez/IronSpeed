@@ -1,15 +1,19 @@
 class IronSpeed {
   constructor(ctx) {
     this.deck = deck
-    this.player1 = new PlayerHuman(1, -(DISC_SIZE*5/6), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, "blue", this, Z_KEY, X_KEY,)
-    this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE/6), -1, "green", this)
-    this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE/6), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, "red", this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
-    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*5/6), 1, "yellow", this)
+    this.player1 = new PlayerHuman(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, Z_KEY, X_KEY,)
+    this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this)
+    this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*10/13), 1, this)
     this.players = [this.player1, this.player2, this.player3, this.player4]
-    this.turn = 1
+    this.turn = 0
     this.orderDiscs = []
     this.propCheck = 'form'
     this.upground = new Upground(ctx, this)
+  }
+
+  setStartTurn() {
+    this.turn = 1
   }
   
   _updateAllCurrentsCards() {
@@ -47,7 +51,11 @@ class IronSpeed {
         return
       }
     }
-    console.log(`All the cards are in the center. Each player pick up their cards. ¿¿¿PLAYER1??? start again.`)
+    console.log(`All the cards are in the center. Each player pick up their cards. PLAYER1 start again.`)
+    let messageAllCenter = new Message (`All cards in the center`, 2000)
+    messageAllCenter.showMessage()
+    let messageRestart = new Message (`PLAYER1 start again`, 1500)
+    setTimeout(() => {messageRestart.showMessage()}, 2000)
     for (let i = 0; i < this.players.length; i++) {
       this._addCardsLoser(i + 1, i + 1)
     }
@@ -65,7 +73,10 @@ class IronSpeed {
       }
     }
     for (let i = 0; i < playersCheck.length; i++) {
-      if (playersCheck[i].centerCards[0].type === 'color') {
+      if (playersCheck[i].centerCards[0].type === 'disc') {
+        this.turn = 'discTurn'
+        return
+      } else if (playersCheck[i].centerCards[0].type === 'color') {
         this.propCheck = 'color'
         return
       } else {
@@ -91,7 +102,7 @@ class IronSpeed {
   playDiscsComputersPlayers() {
     for (let i = 0; i < this.players.length; i++) {
       if (this.players[i].typePlayer === 'computer') {
-        this.players[i].throwDisc()
+        this.players[i].checkThrowDisc()
       }
     }
   }
@@ -121,6 +132,8 @@ class IronSpeed {
         this._addCardsLoser(id, i + 1)
       }
       console.log(`mistake player${id}, loses the duel`)
+      let messageMistake = new Message (`mistake PLAYER${id}`, 2000)
+      messageMistake.showMessage()
       this.turn = id
       return
     }
@@ -138,6 +151,8 @@ class IronSpeed {
         this._addCardsLoser(id, i + 1)
       }
       console.log(`mistake PLAYER${id}, loses the duel`)
+      let messageMistake = new Message (`mistake PLAYER${id}`, 2000)
+      messageMistake.showMessage()
       this.turn = id
       return
     } 
@@ -162,7 +177,8 @@ class IronSpeed {
         this._addCardsLoser(j, j)
       }
       console.log(`${prop}´s duel | PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the duel`)
-      
+      let messageWin = new Message (`PLAYER${id} wins the duel`, 2000)
+      messageWin.showMessage()      
       let nextTurn = id
       for (let i = 0; i <= this.players.length; i++) {
         if(nextTurn >= this.players.length) {
@@ -188,10 +204,14 @@ class IronSpeed {
     if (winners.length > 0) {
       this.turn = null
       winners.forEach(winner => console.log(`player${winner} wins`))
+      for (let i = 0; i < winners.length; i++){
+        let messageChampion = new Message (`PLAYER${winners[i]} is the CHAMPION!`, 10000)
+        setTimeout(() => {messageChampion.showMessage()}, 2000)
+      }
     }
   }
 
-  duel() {
+  duelCards() {
     this._checkCards(this.orderDiscs[0], this.propCheck)
     this._updateAllCurrentsCards()
     this._updateAllCountersCards()
@@ -202,6 +222,42 @@ class IronSpeed {
       return
     } else {
       console.log(`PLAYER${this.turn} it´s your turn`)
+      let messageTurn = new Message (`PLAYER${this.turn} it´s your turn`, 1500)
+      setTimeout(() => {messageTurn.showMessage()}, 2000)
+      setTimeout(() => {this.playCardNextComputerPlayer()}, 4000)
+    }
+  }
+
+  duelDiscs() {
+    console.log(`every players must throw the disc`)
+    let fullOrderDiscs = this.orderDiscs
+    for (let i = 0; i < this.players.length; i++) {
+      if (!fullOrderDiscs.includes(this.players[i].id)) {
+        fullOrderDiscs.push(this.players[i].id)
+      }
+    }
+    let loser = fullOrderDiscs[this.players.length - 1]
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].centerCards.length > 0) {
+      let winner = this.players[i].id
+      this._addCardsLoser(loser, winner)
+      }
+    }
+    console.log(`PLAYER${loser} loses`)
+    let messageLoser = new Message (`PLAYER${loser} loses`, 1500)
+    setTimeout(() => {messageLoser.showMessage()}, 2000)
+    this._updateAllCurrentsCards()
+    this._updateAllCountersCards()
+    this.players.forEach(player => player.disc.resetDisc())
+    this.orderDiscs = []
+    this.turn = loser
+    this._checkWinner()
+    if (this.turn === null) {
+      return
+    } else {
+      console.log(`PLAYER${this.turn} it´s your turn`)
+      let messageTurn = new Message (`PLAYER${this.turn} it´s your turn`, 1500)
+      setTimeout(() => {messageTurn.showMessage()}, 2000)
       this.playCardNextComputerPlayer()
     }
   }
