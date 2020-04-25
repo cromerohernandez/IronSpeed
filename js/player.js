@@ -13,7 +13,11 @@ class Player {
   }
 
   updateCounterCards() {
-    document.getElementById(`counterCards${this.id}`).innerText = `${this.playerCards.length}`
+    if (this.centerCards.length === 0) {
+      document.getElementById(`counterCards${this.id}`).innerText = `${this.playerCards.length}`
+    } else {
+      document.getElementById(`counterCards${this.id}`).innerText = ''
+    }
   }
 
   throwCard() {
