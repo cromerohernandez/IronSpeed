@@ -5,8 +5,13 @@ class Message {
   }
 
   showMessage() {
-    this.addMessage()
-    setTimeout(() => {this.deleteMessage()}, this.time)
+    let prevMessage = document.getElementById('popMessage')
+    if (prevMessage) {
+      setTimeout(() => {this.showMessage()}, 1000)
+    } else {
+      this.addMessage()
+      setTimeout(() => {this.deleteMessage()}, this.time)
+    }
   }
 
   addMessage() {
@@ -17,13 +22,15 @@ class Message {
     let message = document.createElement('h1')
     message.innerText = this.text
     message.setAttribute('id', 'message')
-    popMessage.appendChild(message) 
+    popMessage.appendChild(message)
   }
 
   deleteMessage() {
     let screen = document.getElementById('screen')
     let popMessage = document.getElementById('popMessage')
-    screen.removeChild(popMessage)
+    if (popMessage) {
+      screen.removeChild(popMessage)
+    }
   }
 
 }

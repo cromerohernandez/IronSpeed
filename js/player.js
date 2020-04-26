@@ -30,7 +30,7 @@ class Player {
       this.game.checkAllCardsInCenter()
       this.game.updatePropCheck()
       if (this.game.turn === 'discTurn') {
-        this.game.playDiscsComputersPlayers() //
+        this.game.playDiscsComputersPlayers()
         setTimeout(() => {this.game.duelDiscs()}, 3000)
       } else {
         this.game.incrementTurn()

@@ -15,6 +15,47 @@ body {
   background-position: center;
 }
 
+#logo-instructions {
+  width: 30vh;
+  height: 30vh;
+}
+
+#instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+}
+
+#controls-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 7vh
+}
+
+#keys-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 5vh
+}
+
+#key {
+  display: flex;
+  align-items: center;
+}
+
+#key-img {
+  height: 5vh;
+  width: 5vh;
+  margin-right: 2vh
+}
+
 #board {
   height: 100vh;
   min-height: 500px;
@@ -170,8 +211,28 @@ body {
   margin: 0
 }
 
+h1 {
+  font-size: 2.5vh;
+  font-weight: bold;
+  color: #a3b9c2;
+}
+
+h2 {
+  font-size: 2.2vh;
+  font-weight: bold;
+  color: #a3b9c2;
+}
+
 h3 {
   font-size: 1.8vh;
   color: #4c7282;
   opacity: 0.7;
+}
+
+
+
+#buttonTest {
+  background-color: red;
+  height: 5vh;
+  width: 5vh;
 }

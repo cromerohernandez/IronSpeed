@@ -12,6 +12,17 @@ class IronSpeed {
     this.upground = new Upground(ctx, this)
   }
 
+
+  /*start() {
+    setTimeout(() => {this.dealCards()}, 5000)
+    let messageDeal = new Message ('Dealt cards', 2000)
+    setTimeout(() => {messageDeal.showMessage()}, 5000)
+    let messageStart = new Message ('Start PLAYER1', 2000)
+    setTimeout(() => {messageStart.showMessage()}, 7000)
+    setTimeout(() => {this.setStartTurn()}, 9000)
+  }*/
+
+
   setStartTurn() {
     this.turn = 1
   }
