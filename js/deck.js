@@ -558,6 +558,6 @@ const deck = [
     color: 'disc4',
     img: 'SpecialDiscs.png',
     type: 'disc'
-  },
+  }
 
 ]

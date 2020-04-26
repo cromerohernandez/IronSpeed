@@ -216,7 +216,7 @@ class IronSpeed {
       this.turn = null
       winners.forEach(winner => console.log(`player${winner} wins`))
       for (let i = 0; i < winners.length; i++){
-        let messageChampion = new Message (`PLAYER${winners[i]} is the CHAMPION!`, 10000)
+        let messageChampion = new Message (`PLAYER${winners[i]} wins!`, 10000, 'winner', winners[i])
         setTimeout(() => {messageChampion.showMessage()}, 2000)
       }
     }
