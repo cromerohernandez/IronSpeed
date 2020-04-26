@@ -187,7 +187,7 @@ class IronSpeed {
         let j = losersPlayers[i]
         this._addCardsLoser(j, j)
       }
-      console.log(`${prop}´s duel | PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the duel`)
+      console.log(`${prop} duel | PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the duel`)
       let messageWin = new Message (`PLAYER${id} wins the duel`, 2000)
       messageWin.showMessage()      
       let nextTurn = id
