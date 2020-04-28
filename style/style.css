@@ -15,10 +15,80 @@ body {
   background-position: center;
 }
 
-#logo-instructions {
+h1 {
+  font-size: 2.5vh;
+  font-weight: bold;
+  color: #a3b9c2;
+}
+
+h2 {
+  font-size: 2.2vh;
+  font-weight: bold;
+  color: #a3b9c2;
+}
+
+h3 {
+  font-size: 1.8vh;
+  color: #4c7282;
+  opacity: 0.7;
+}
+
+/*HOME*/
+
+#board-menu {
+  height: 100vh;
+  width: 100vh;
+  min-width: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#board-menu-top {
+  height: 55vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center
+}
+
+#board-menu-bottom {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+#logo-menu {
   width: 30vh;
   height: 30vh;
 }
+
+#button-instruction {
+  height: 7vh;
+  width: 7vh;
+  margin: 5vh;
+  border: 0;
+  background: url('../images/MenuInstructionsIcon.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#button-play {
+  height: 7vh;
+  width: 7vh;
+  margin: 5vh;
+  border: 0;
+  background: url('../images/MenuPlayIcon.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+
 
 #instructions {
   display: flex;
@@ -56,9 +126,10 @@ body {
   margin-right: 2vh
 }
 
-#board {
+/*PLAY*/
+
+#board-play {
   height: 100vh;
-  min-height: 500px;
   width: 100vh;
   min-width: 500px;
   position: relative;
@@ -79,18 +150,6 @@ body {
   justify-content: space-between;
 }
 
-#cardCenter4 {
-  background: url('../images/CardMark.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 20vh;
-  width: 20vh;
-  margin-top: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #board-middle {
   height: 50%;
   width: 100%;
@@ -105,6 +164,33 @@ body {
   justify-content: space-between;
 }
 
+#board-center {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#board-right {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#board-bottom {
+  height: 25%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#logo-center {
+  width: 20vh;
+}
+
 #cardCenter1 {
   background: url('../images/CardMark.png');
   background-repeat: no-repeat;
@@ -117,22 +203,16 @@ body {
   justify-content: center;
 }
 
-#board-center {
-  width: 50%;
+#cardCenter2 {
+  background: url('../images/CardMark.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+  margin-bottom: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-#logo-center {
-  width: 20vh;
-}
-
-#board-right {
-  width: 25%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 #cardCenter3 {
@@ -147,29 +227,20 @@ body {
   justify-content: center;
 }
 
-#board-bottom {
-  height: 25%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#my-canvas {
-  position: absolute;
-}
-
-#cardCenter2 {
+#cardCenter4 {
   background: url('../images/CardMark.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
   width: 20vh;
-  margin-bottom: 5vh;
+  margin-top: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#my-canvas {
+  position: absolute;
 }
 
 #start {
@@ -215,30 +286,4 @@ body {
   color: #a3b9c2;
   text-align: center;
   margin: 0
-}
-
-h1 {
-  font-size: 2.5vh;
-  font-weight: bold;
-  color: #a3b9c2;
-}
-
-h2 {
-  font-size: 2.2vh;
-  font-weight: bold;
-  color: #a3b9c2;
-}
-
-h3 {
-  font-size: 1.8vh;
-  color: #4c7282;
-  opacity: 0.7;
-}
-
-
-
-#buttonTest {
-  background-color: red;
-  height: 5vh;
-  width: 5vh;
 }

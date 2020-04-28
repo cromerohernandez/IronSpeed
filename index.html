@@ -8,15 +8,17 @@
   <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-  <!-- <div>boardGame</div>
+  <div id="board-menu">
+    <div id="board-menu-top">
+      <img src="images/IronSpeed-LogoLineLight.png" id="logo-menu">
+    </div>
+    <div id="board-menu-bottom">
+      <button onclick="game.start(); getElementById('testerDiv').innerHTML = ''" id="button-instruction"></button>
+      <button onclick="game.start(); getElementById('testerDiv').innerHTML = ''" id="button-play"></button>
+    </div>
 
-  <div>
-    <img src="images/IronSpeed-LogoLineLight.png" id="logo-instructions">
-    <button onClick=""></button>
-    <input type="button" onclick="dealCards();" id="buttonTest"></input>
 
-
-    <div id="instructions">
+  <!--  <div id="instructions">
       <h1>· INTRUCTIONS ·</h1>
       <h2>Throw a card when it's your turn.</h2>
       <h2>Duel: If you play a card that matches the symbol of another player's top card, be the first to  throw the disc. The loser of the duel takes both players' played cards.</h2>
@@ -58,14 +60,7 @@
   </div> -->
 
 
-
-
-  <div id="testerDiv">
-    <button onclick="game.start(); getElementById('testerDiv').innerHTML = ''" id="buttonTest"></button>
-  </div>
-
-
-  <div id="board">
+  <!-- <div id="board-play">
     <div id="board-top">
       <div id="cardCenter4">
         <h3 id="counterCards4">0</h3>
@@ -92,7 +87,7 @@
       </div>
     </div>
     <div id="screen"></div>
-    <canvas id="my-canvas"></canvas>
+    <canvas id="my-canvas"></canvas>  -->
   </div>
 
   <script src="js/const.js"></script>
