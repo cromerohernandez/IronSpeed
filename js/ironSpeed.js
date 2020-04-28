@@ -1,9 +1,15 @@
 class IronSpeed {
-  constructor(ctx) {
+  constructor(ctx, humanPlayers) {
     this.deck = deck
-    this.player1 = new PlayerHuman(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, Z_KEY, X_KEY,)
-    this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this)
-    this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    if (humanPlayers === 1) {
+      this.player1 = new PlayerComputer(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this)
+      this.player2 = new PlayerHuman(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+      this.player3 = new PlayerComputer(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this)
+    } else if (humanPlayers === 2) {
+      this.player1 = new PlayerHuman(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, Z_KEY, X_KEY,)
+      this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this)
+      this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    } 
     this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*10/13), 1, this)
     this.players = [this.player1, this.player2, this.player3, this.player4]
     this.turn = 0
@@ -25,6 +31,7 @@ class IronSpeed {
 
   setStartTurn() {
     this.turn = 1
+    this.playCardNextComputerPlayer()
   }
   
   _updateAllCurrentsCards() {
@@ -83,13 +90,16 @@ class IronSpeed {
         playersCheck.push(this.players[i])
       }
     }
+    let possibleColor = false
     for (let i = 0; i < playersCheck.length; i++) {
       if (playersCheck[i].centerCards[0].type === 'disc') {
         this.turn = 'discTurn'
         return
       } else if (playersCheck[i].centerCards[0].type === 'color') {
         this.propCheck = 'color'
-        return
+        possibleColor = true
+      } else if (playersCheck[i].centerCards[0].type === 'normal' && possibleColor === true)  {
+        continue
       } else {
         this.propCheck = 'form'
       }
@@ -119,7 +129,7 @@ class IronSpeed {
   }
 
   playCardNextComputerPlayer() {
-    if (this.players[this.turn-1].typePlayer === 'computer') {
+    if (this.players[this.turn-1].typePlayer && this.players[this.turn-1].typePlayer === 'computer') {
       this.players[this.turn-1].throwCard()
     }
   }

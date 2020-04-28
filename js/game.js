@@ -3,7 +3,7 @@ canvas.height = window.innerHeight
 canvas.width = window.innerHeight
 const ctx = canvas.getContext("2d")
 
-const game = new IronSpeed(ctx)
+const game = new IronSpeed(ctx, 2)
 game.upground.run()
 
 setTimeout(() => {game.dealCards()}, 2000)
