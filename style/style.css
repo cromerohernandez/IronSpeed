@@ -22,8 +22,9 @@ h1 {
 }
 
 h2 {
-  font-size: 2.2vh;
-  font-weight: bold;
+  margin: 0.9vh 0;
+  font-size: 2vh;
+  font-weight: 600;
   color: #a3b9c2;
 }
 
@@ -47,15 +48,24 @@ h3 {
 }
 
 #board-menu-top {
-  height: 55vh;
+  height: 42vh;
+  padding-bottom: 3vh;
   display: flex;
   align-items: flex-end;
   justify-content: center
 }
 
-#board-menu-bottom {
-  height: 45vh;
+#board-menu-bottom-home {
+  height: 55vh;
   display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+#board-menu-bottom-instructions {
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center
 }
@@ -65,9 +75,9 @@ h3 {
   height: 30vh;
 }
 
-#button-instruction {
-  height: 7vh;
-  width: 7vh;
+#instructions-button {
+  height: 6vh;
+  width: 6vh;
   margin: 5vh;
   border: 0;
   background: url('../images/MenuInstructionsIcon.png');
@@ -75,12 +85,48 @@ h3 {
   background-size: cover;
 }
 
-#button-play {
-  height: 7vh;
-  width: 7vh;
+#play-button {
+  height: 6vh;
+  width: 6vh;
   margin: 5vh;
   border: 0;
   background: url('../images/MenuPlayIcon.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center
+}
+
+#instructions-title {
+  margin: 0.9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+#specialCard-instruction {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start
+}
+
+#specialCard-instruction-img {
+  height: 7vh;
+  width: 7vh;
+  margin: 1vh 2vh 1vh 0
+}
+
+#back-button {
+  height: 6vh;
+  width: 6vh;
+  margin: 2vh;
+  border: 0;
+  background: url('../images/MenuBackIcon.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -90,11 +136,6 @@ h3 {
 
 
 
-#instructions {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-}
 
 #controls {
   display: flex;

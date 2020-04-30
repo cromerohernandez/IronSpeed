@@ -8,27 +8,20 @@
   <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
+  <div id="board-toPlay"></div>
+  <div id="screen"></div>
+  <canvas id="my-canvas"></canvas>
   <div id="board-menu">
     <div id="board-menu-top">
       <img src="images/IronSpeed-LogoLineLight.png" id="logo-menu">
     </div>
-    <div id="board-menu-bottom">
-      <button onclick="game.start(); getElementById('testerDiv').innerHTML = ''" id="button-instruction"></button>
-      <button onclick="game.start(); getElementById('testerDiv').innerHTML = ''" id="button-play"></button>
+    <div id="board-menu-bottom-home">
+      <button onclick="board.instructions();" id="instructions-button"></button>
+      <button onclick="game.start();" id="play-button"></button>
     </div>
+  </div>
 
-
-  <!--  <div id="instructions">
-      <h1>· INTRUCTIONS ·</h1>
-      <h2>Throw a card when it's your turn.</h2>
-      <h2>Duel: If you play a card that matches the symbol of another player's top card, be the first to  throw the disc. The loser of the duel takes both players' played cards.</h2>
-      <h2>If you make a mistake when throwing the disc, you must take all the cards currently in play.</h2>
-      <h2>If you are the first to get rid of all your cards... ¡you win!</h2>
-      <h2>Special cards:</h2>
-      <h2>While this card is still exposed, duels are based on matching colors, and symbol duels do not apply.</h2>
-      <h2>All players must throw the disc. The slowest player must take all the cards currently in play.</h2>
-    </div>
-
+  <!--  
     <div id="controls">
       <div id="controls-player">
         <h2>· PLAYER 1 ·</h2>
@@ -85,10 +78,8 @@
       <div id="cardCenter2">
         <h3 id="counterCards2">0</h3>
       </div>
-    </div>
-    <div id="screen"></div>
-    <canvas id="my-canvas"></canvas>  -->
-  </div>
+    </div> -->
+
 
   <script src="js/const.js"></script>
   <script src="js/message.js"></script>
@@ -99,6 +90,8 @@
   <script src="js/playerComputer.js"></script>
   <script src="js/upground.js"></script>
   <script src="js/ironSpeed.js"></script>
+  <script src="js/board.js"></script>
   <script src="js/game.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>
