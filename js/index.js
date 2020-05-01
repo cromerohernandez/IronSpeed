@@ -1,4 +1,4 @@
-const board = new Board()
+const menu = new Menu()
 
 const canvas = document.getElementById("my-canvas")
 canvas.height = window.innerHeight

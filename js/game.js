@@ -20,10 +20,10 @@ class Game {
     this.game = []
   }
 
-  start() {
-    board.gameBoard()
+  start(humanPlayers) {
+    menu.board()
 
-    const ironSpeed = new IronSpeed(this.ctx, 2)
+    const ironSpeed = new IronSpeed(this.ctx, humanPlayers)
     this.game = ironSpeed
     ironSpeed.upground.run()
 

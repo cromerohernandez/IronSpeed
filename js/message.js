@@ -17,10 +17,10 @@ class Message {
   }
 
   addMessage() {
-    let screen = document.getElementById('screen')
+    let messageViewer = document.getElementById('messageViewer')
     let popMessage = document.createElement('div')
     popMessage.setAttribute('id', 'popMessage')
-    screen.appendChild(popMessage)
+    messageViewer.appendChild(popMessage)
     if (this.type === 'winner') {
       let img = document.createElement('img')
       img.setAttribute('src', `images/LogoWinner${this.player}.png`)
@@ -34,10 +34,10 @@ class Message {
   }
 
   deleteMessage() {
-    let screen = document.getElementById('screen')
+    let messageViewer = document.getElementById('messageViewer')
     let popMessage = document.getElementById('popMessage')
     if (popMessage) {
-      screen.removeChild(popMessage)
+      messageViewer.removeChild(popMessage)
     }
   }
 

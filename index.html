@@ -9,15 +9,15 @@
 </head>
 <body>
   <div id="board-toPlay"></div>
-  <div id="screen"></div>
+  <div id="messageViewer"></div>
   <canvas id="my-canvas"></canvas>
-  <div id="board-menu">
-    <div id="board-menu-top">
+  <div id="menu">
+    <div id="menu-top">
       <img src="images/IronSpeed-LogoLineLight.png" id="logo-menu">
     </div>
-    <div id="board-menu-bottom-home">
-      <button onclick="board.instructions();" id="instructions-button"></button>
-      <button onclick="game.start();" id="play-button"></button>
+    <div id="menu-bottom" class="menu-home">
+      <button onclick="menu.instructions()" id="menu-button" class="instructions-button"></button>
+      <button onclick="menu.selectHumanPlayers()" id="menu-button" class="play-button"></button>
     </div>
   </div>
 
@@ -90,7 +90,7 @@
   <script src="js/playerComputer.js"></script>
   <script src="js/upground.js"></script>
   <script src="js/ironSpeed.js"></script>
-  <script src="js/board.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/game.js"></script>
   <script src="js/index.js"></script>
 </body>
