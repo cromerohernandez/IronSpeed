@@ -3,14 +3,26 @@ class Menu {
     this.body = document.body
   }
 
+  removeMenu() {
+    const menu = document.getElementById('menu')
+    this.body.removeChild(menu)
+  }
+
   home() {
+    let menuCenter = document.getElementById('menu-center')
+    if (menuCenter.hasChildNodes()) {
+      while (menuCenter.childNodes.length >= 1) {
+        menuCenter.removeChild(menuCenter.firstChild)
+      }
+    }
+    menuCenter.setAttribute('class', 'menu-home')
+
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
         menuBottom.removeChild(menuBottom.firstChild)
       }
     }
-    menuBottom.setAttribute('class', 'menu-home')
 
     let instructionsButton = document.createElement('button')
     instructionsButton.setAttribute('id', 'menu-button')
@@ -21,18 +33,20 @@ class Menu {
     playButton.setAttribute('class', 'play-button')
     playButton.setAttribute('onclick', 'menu.selectComputerLevel()')
 
-    menuBottom.appendChild(instructionsButton)
-    menuBottom.appendChild(playButton)
+    menuCenter.appendChild(instructionsButton)
+    menuCenter.appendChild(playButton)
   }
 
   instructions() {
-    let menuBottom = document.getElementById('menu-bottom')
-    if (menuBottom.hasChildNodes()) {
-      while (menuBottom.childNodes.length >= 1) {
-        menuBottom.removeChild(menuBottom.firstChild)
+    let menuCenter = document.getElementById('menu-center')
+    if (menuCenter.hasChildNodes()) {
+      while (menuCenter.childNodes.length >= 1) {
+        menuCenter.removeChild(menuCenter.firstChild)
       }
     }
-    menuBottom.setAttribute('class', 'menu-instructions')
+    menuCenter.setAttribute('class', 'menu-instructions')
+
+    let menuBottom = document.getElementById('menu-bottom')
 
     let instructionsTitle = document.createElement('h1')
     instructionsTitle.setAttribute('id', 'instructions-title')
@@ -47,25 +61,34 @@ class Menu {
     instructions.innerHTML = (instruction1 + instruction2 + instruction3 + instructionSpecialColors + instructionSpecialDiscs)
     let instructionWinner = document.createElement('h2')
     instructionWinner.innerText = "If you are the first to get rid of all your cards... ¡ YOU WIN !"
+
+    menuCenter.appendChild(instructionsTitle)
+    menuCenter.appendChild(instructions)
+    menuCenter.appendChild(instructionWinner)
+
     let backButton = document.createElement('button')
     backButton.setAttribute('id', 'menu-button')
     backButton.setAttribute('class', 'back-button')
     backButton.setAttribute('onclick', 'menu.home()')
 
-    menuBottom.appendChild(instructionsTitle)
-    menuBottom.appendChild(instructions)
-    menuBottom.appendChild(instructionWinner)
     menuBottom.appendChild(backButton)
   }
 
   selectComputerLevel() {
+    let menuCenter = document.getElementById('menu-center')
+    if (menuCenter.hasChildNodes()) {
+      while (menuCenter.childNodes.length >= 1) {
+        menuCenter.removeChild(menuCenter.firstChild)
+      }
+    }
+    menuCenter.setAttribute('class', 'menu-selectComputerLevel')
+
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
         menuBottom.removeChild(menuBottom.firstChild)
       }
     }
-    menuBottom.setAttribute('class', 'menu-selectComputerLevel')
 
     let titleSelectComputerLevel = document.createElement('h1')
     titleSelectComputerLevel.innerText = ("Select computer level")
@@ -92,24 +115,32 @@ class Menu {
     panelComputerLevelButtons.appendChild(level2ComputerButton)
     panelComputerLevelButtons.appendChild(level3ComputerButton)
 
+    menuCenter.appendChild(titleSelectComputerLevel)
+    menuCenter.appendChild(panelComputerLevelButtons)
+
     let backButton = document.createElement('button')
     backButton.setAttribute('id', 'menu-button')
     backButton.setAttribute('class', 'back-button')
     backButton.setAttribute('onclick', 'menu.home()')
 
-    menuBottom.appendChild(titleSelectComputerLevel)
-    menuBottom.appendChild(panelComputerLevelButtons)
     menuBottom.appendChild(backButton)
   }
 
   selectHumanPlayers(levelComputer) {
+    let menuCenter = document.getElementById('menu-center')
+    if (menuCenter.hasChildNodes()) {
+      while (menuCenter.childNodes.length >= 1) {
+        menuCenter.removeChild(menuCenter.firstChild)
+      }
+    }
+    menuCenter.setAttribute('class', 'menu-selectHumanPlayers')
+
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
         menuBottom.removeChild(menuBottom.firstChild)
       }
     }
-    menuBottom.setAttribute('class', 'menu-selectHumanPlayers')
 
     let titleSelectHumanPlayers = document.createElement('h1')
     titleSelectHumanPlayers.innerText = ('Select the number of human players')
@@ -130,24 +161,32 @@ class Menu {
     panelHumanPlayerButtons.appendChild(oneHumanPlayerButton)
     panelHumanPlayerButtons.appendChild(twoHumanPlayerButton)
 
+    menuCenter.appendChild(titleSelectHumanPlayers)
+    menuCenter.appendChild(panelHumanPlayerButtons)
+
     let backButton = document.createElement('button')
     backButton.setAttribute('id', 'menu-button')
     backButton.setAttribute('class', 'back-button')
     backButton.setAttribute('onclick', 'menu.selectComputerLevel()')
 
-    menuBottom.appendChild(titleSelectHumanPlayers)
-    menuBottom.appendChild(panelHumanPlayerButtons)
     menuBottom.appendChild(backButton)
   }
 
   controlsOneHumanPlayer(levelComputer) {
+    let menuCenter = document.getElementById('menu-center')
+    if (menuCenter.hasChildNodes()) {
+      while (menuCenter.childNodes.length >= 1) {
+        menuCenter.removeChild(menuCenter.firstChild)
+      }
+    }
+    menuCenter.setAttribute('class', 'menu-schema')
+
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
         menuBottom.removeChild(menuBottom.firstChild)
       }
     }
-    menuBottom.setAttribute('class', 'menu-schema')
 
     let schema = document.createElement('div')
     schema.setAttribute('id', 'schema')
@@ -172,6 +211,8 @@ class Menu {
     schema.appendChild(boardSchema1HumanPlayer)
     schema.appendChild(controlsPlayer2)
 
+    menuCenter.appendChild(schema)
+
     let butonPanel = document.createElement('div')
     schema.setAttribute('id', 'button-panel')
     let backButton = document.createElement('button')
@@ -185,18 +226,24 @@ class Menu {
     butonPanel.appendChild(backButton)
     butonPanel.appendChild(playButton)
 
-    menuBottom.appendChild(schema)
     menuBottom.appendChild(butonPanel)
   }
 
   controlsTwoHumanPlayers(levelComputer) {
+    let menuCenter = document.getElementById('menu-center')
+    if (menuCenter.hasChildNodes()) {
+      while (menuCenter.childNodes.length >= 1) {
+        menuCenter.removeChild(menuCenter.firstChild)
+      }
+    }
+    menuCenter.setAttribute('class', 'menu-schema')
+
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
         menuBottom.removeChild(menuBottom.firstChild)
       }
     }
-    menuBottom.setAttribute('class', 'menu-schema')
 
     let schema = document.createElement('div')
     schema.setAttribute('id', 'schema')
@@ -234,6 +281,8 @@ class Menu {
     schema.appendChild(boardSchema2HumanPlayers)
     schema.appendChild(controlsPlayer3)
 
+    menuCenter.appendChild(schema)
+
     let butonPanel = document.createElement('div')
     schema.setAttribute('id', 'button-panel')
     let backButton = document.createElement('button')
@@ -247,7 +296,6 @@ class Menu {
     butonPanel.appendChild(backButton)
     butonPanel.appendChild(playButton)
 
-    menuBottom.appendChild(schema)
     menuBottom.appendChild(butonPanel)
   }
 
@@ -287,21 +335,26 @@ class Menu {
     boardPlay.appendChild(boardBottom)
 
     board.appendChild(boardPlay)
+
+    let returnHome = document.getElementById('return-home')
+
+    let homeButton = document.createElement('button')
+    homeButton.setAttribute('id', 'menu-button')
+    homeButton.setAttribute('class', 'home-button')
+    homeButton.setAttribute('onclick', `location.reload()`)
+
+    returnHome.appendChild(homeButton)
   }
 
   startOneHumanPlayer(levelComputer) {
-    const optionsMenu = document.getElementById('menu')
-    document.body.removeChild(optionsMenu)
-
-    menu.board()
+    this.removeMenu()
+    this.board()
     game.start(1, levelComputer)
   }
 
   startTwoHumanPlayers(levelComputer) {
-    const optionsMenu = document.getElementById('menu')
-    document.body.removeChild(optionsMenu)
-
-    menu.board()
+    this.removeMenu()
+    this.board()
     game.start(2, levelComputer)
   }
 }

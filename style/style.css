@@ -55,8 +55,15 @@ h3 {
   justify-content: center
 }
 
+#menu-center {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
 #menu-bottom {
-  height: 55vh;
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center
@@ -178,6 +185,10 @@ h3 {
 
 .level3Computer-button {
   background: url('../images/MenuLevel3ComputerIcon.png');
+}
+
+.home-button {
+  background: url('../images/MenuHomeIcon.png');
 }
 
 #controls-player {
@@ -363,4 +374,13 @@ h3 {
   color: #a3b9c2;
   text-align: center;
   margin: 0
+}
+
+#return-home {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }

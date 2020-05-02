@@ -52,10 +52,10 @@ class Player {
       return
     }
     if (!this.game.orderDiscs.includes(this.id)) {
+      this.game.orderDiscs.push(this.id)
       this.disc.maxX = ((window.innerHeight / 2) - (3 * DISC_SIZE / 4)) + (Math.random() * (DISC_SIZE / 2))
       this.disc.maxY = ((window.innerHeight / 2) - (3 * DISC_SIZE / 4)) + (Math.random() * (DISC_SIZE / 2))
       this.disc.deviation = (Math.random() * 2) - 1
-      this.game.orderDiscs.push(this.id)
       console.log(`PLAYER${this.id} throws the disc`)
       if ((this.game.orderDiscs.length === 1) && (this.game.turn !== 'discTurn')) {
         setTimeout(() => {this.game.duelCards()}, 3000)
