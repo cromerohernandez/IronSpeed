@@ -19,7 +19,7 @@ class Menu {
     let playButton = document.createElement('button')
     playButton.setAttribute('id', 'menu-button')
     playButton.setAttribute('class', 'play-button')
-    playButton.setAttribute('onclick', 'menu.selectHumanPlayers()')
+    playButton.setAttribute('onclick', 'menu.selectComputerLevel()')
 
     menuBottom.appendChild(instructionsButton)
     menuBottom.appendChild(playButton)
@@ -59,27 +59,50 @@ class Menu {
   }
 
   selectComputerLevel() {
-    /*let level1ComputerButton = document.createElement('button')
+    let menuBottom = document.getElementById('menu-bottom')
+    if (menuBottom.hasChildNodes()) {
+      while (menuBottom.childNodes.length >= 1) {
+        menuBottom.removeChild(menuBottom.firstChild)
+      }
+    }
+    menuBottom.setAttribute('class', 'menu-selectComputerLevel')
+
+    let titleSelectComputerLevel = document.createElement('h1')
+    titleSelectComputerLevel.innerText = ("Select computer level")
+
+    let panelComputerLevelButtons = document.createElement('div')
+    panelComputerLevelButtons.setAttribute('id', 'panel-optionsButtons')
+
+    let level1ComputerButton = document.createElement('button')
     level1ComputerButton.setAttribute('id', 'menu-button')
     level1ComputerButton.setAttribute('class', 'level1Computer-button')
-    level1ComputerButton.setAttribute('onclick', 'menu.controlsTwoHumanPlayers()')
+    level1ComputerButton.setAttribute('onclick', 'menu.selectHumanPlayers(1)')
 
     let level2ComputerButton = document.createElement('button')
     level2ComputerButton.setAttribute('id', 'menu-button')
     level2ComputerButton.setAttribute('class', 'level2Computer-button')
-    level2ComputerButton.setAttribute('onclick', 'menu.controlsTwoHumanPlayers()')
+    level2ComputerButton.setAttribute('onclick', 'menu.selectHumanPlayers(2)')
 
     let level3ComputerButton = document.createElement('button')
     level3ComputerButton.setAttribute('id', 'menu-button')
     level3ComputerButton.setAttribute('class', 'level3Computer-button')
-    level3ComputerButton.setAttribute('onclick', 'menu.controlsTwoHumanPlayers()')*/
+    level3ComputerButton.setAttribute('onclick', 'menu.selectHumanPlayers(3)')
 
-    /*menuBottom.appendChild(level1ComputerButton)
-    menuBottom.appendChild(level2ComputerButton)
-    menuBottom.appendChild(level3ComputerButton)*/
+    panelComputerLevelButtons.appendChild(level1ComputerButton)
+    panelComputerLevelButtons.appendChild(level2ComputerButton)
+    panelComputerLevelButtons.appendChild(level3ComputerButton)
+
+    let backButton = document.createElement('button')
+    backButton.setAttribute('id', 'menu-button')
+    backButton.setAttribute('class', 'back-button')
+    backButton.setAttribute('onclick', 'menu.home()')
+
+    menuBottom.appendChild(titleSelectComputerLevel)
+    menuBottom.appendChild(panelComputerLevelButtons)
+    menuBottom.appendChild(backButton)
   }
 
-  selectHumanPlayers() {
+  selectHumanPlayers(levelComputer) {
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
@@ -88,21 +111,21 @@ class Menu {
     }
     menuBottom.setAttribute('class', 'menu-selectHumanPlayers')
 
-    let titleSelectHumanPlayers = document.createElement('h2')
+    let titleSelectHumanPlayers = document.createElement('h1')
     titleSelectHumanPlayers.innerText = ('Select the number of human players')
 
     let panelHumanPlayerButtons = document.createElement('div')
-    panelHumanPlayerButtons.setAttribute('id', 'panel-HumanPlayersButtons')
+    panelHumanPlayerButtons.setAttribute('id', 'panel-optionsButtons')
 
     let oneHumanPlayerButton = document.createElement('button')
     oneHumanPlayerButton.setAttribute('id', 'menu-button')
     oneHumanPlayerButton.setAttribute('class', 'oneHumanPlayers-button')
-    oneHumanPlayerButton.setAttribute('onclick', 'menu.controlsOneHumanPlayer()')
+    oneHumanPlayerButton.setAttribute('onclick', `menu.controlsOneHumanPlayer(${levelComputer})`)
 
     let twoHumanPlayerButton = document.createElement('button')
     twoHumanPlayerButton.setAttribute('id', 'menu-button')
     twoHumanPlayerButton.setAttribute('class', 'twoHumanPlayers-button')
-    twoHumanPlayerButton.setAttribute('onclick', 'menu.controlsTwoHumanPlayers()')
+    twoHumanPlayerButton.setAttribute('onclick', `menu.controlsTwoHumanPlayers(${levelComputer})`)
 
     panelHumanPlayerButtons.appendChild(oneHumanPlayerButton)
     panelHumanPlayerButtons.appendChild(twoHumanPlayerButton)
@@ -110,14 +133,14 @@ class Menu {
     let backButton = document.createElement('button')
     backButton.setAttribute('id', 'menu-button')
     backButton.setAttribute('class', 'back-button')
-    backButton.setAttribute('onclick', 'menu.home()')
+    backButton.setAttribute('onclick', 'menu.selectComputerLevel()')
 
     menuBottom.appendChild(titleSelectHumanPlayers)
     menuBottom.appendChild(panelHumanPlayerButtons)
     menuBottom.appendChild(backButton)
   }
 
-  controlsOneHumanPlayer() {
+  controlsOneHumanPlayer(levelComputer) {
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
@@ -158,7 +181,7 @@ class Menu {
     let playButton = document.createElement('button')
     playButton.setAttribute('id', 'menu-button')
     playButton.setAttribute('class', 'play-button')
-    playButton.setAttribute('onclick', 'menu.startOneHumanPlayer()')
+    playButton.setAttribute('onclick', `menu.startOneHumanPlayer(${levelComputer})`)
     butonPanel.appendChild(backButton)
     butonPanel.appendChild(playButton)
 
@@ -166,7 +189,7 @@ class Menu {
     menuBottom.appendChild(butonPanel)
   }
 
-  controlsTwoHumanPlayers() {
+  controlsTwoHumanPlayers(levelComputer) {
     let menuBottom = document.getElementById('menu-bottom')
     if (menuBottom.hasChildNodes()) {
       while (menuBottom.childNodes.length >= 1) {
@@ -220,7 +243,7 @@ class Menu {
     let playButton = document.createElement('button')
     playButton.setAttribute('id', 'menu-button')
     playButton.setAttribute('class', 'play-button')
-    playButton.setAttribute('onclick', 'menu.startTwoHumanPlayers()')
+    playButton.setAttribute('onclick', `menu.startTwoHumanPlayers(${levelComputer})`)
     butonPanel.appendChild(backButton)
     butonPanel.appendChild(playButton)
 
@@ -266,19 +289,19 @@ class Menu {
     board.appendChild(boardPlay)
   }
 
-  startOneHumanPlayer() {
+  startOneHumanPlayer(levelComputer) {
     const optionsMenu = document.getElementById('menu')
     document.body.removeChild(optionsMenu)
 
     menu.board()
-    game.start(1)
+    game.start(1, levelComputer)
   }
 
-  startTwoHumanPlayers() {
+  startTwoHumanPlayers(levelComputer) {
     const optionsMenu = document.getElementById('menu')
     document.body.removeChild(optionsMenu)
 
     menu.board()
-    game.start(2)
+    game.start(2, levelComputer)
   }
 }

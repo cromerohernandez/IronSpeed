@@ -1,16 +1,16 @@
 class IronSpeed {
-  constructor(ctx, humanPlayers) {
+  constructor(ctx, humanPlayers, responseTimeComputerLevel, errorDiscComputerLevel) {
     this.deck = deck
     if (humanPlayers === 1) {
-      this.player1 = new PlayerComputer(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this)
+      this.player1 = new PlayerComputer(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, responseTimeComputerLevel, errorDiscComputerLevel)
       this.player2 = new PlayerHuman(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
-      this.player3 = new PlayerComputer(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this)
+      this.player3 = new PlayerComputer(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, responseTimeComputerLevel, errorDiscComputerLevel)
     } else if (humanPlayers === 2) {
       this.player1 = new PlayerHuman(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, Z_KEY, X_KEY,)
-      this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this)
+      this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this, responseTimeComputerLevel, errorDiscComputerLevel)
       this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
     } 
-    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*10/13), 1, this)
+    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*10/13), 1, this, responseTimeComputerLevel, errorDiscComputerLevel)
     this.players = [this.player1, this.player2, this.player3, this.player4]
     this.turn = 0
     this.orderDiscs = []

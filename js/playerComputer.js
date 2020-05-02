@@ -1,8 +1,10 @@
 class PlayerComputer extends Player {
-  constructor(id, discX, senseDiscX, discY, senseDiscY, game) {
+  constructor(id, discX, senseDiscX, discY, senseDiscY, game, responseTimeComputerLevel, errorDiscComputerLevel) {
     super(id, discX, senseDiscX, discY, senseDiscY, game)
     this.typePlayer = "computer"
     this.game = game
+    this.responseTimeComputerLevel = responseTimeComputerLevel
+    this.errorDiscComputerLevel = errorDiscComputerLevel
   }
 
   updateCurrentCard() {
@@ -14,14 +16,14 @@ class PlayerComputer extends Player {
   }
 
   throwCard() {
-    const responseTime = (Math.random() * 1000) + 500
+    const responseTime = (Math.random() * 1000) + (this.responseTimeComputerLevel / 1.5)
     setTimeout(() => {super.throwCard()}, responseTime)
   }
 
   _throwDisc() {
-    const success = (Math.random() * 1) - FORGET_DISC_COMPUTER
+    const success = (Math.random() * 1) - this.errorDiscComputerLevel
     if (success > 0) {
-      const responseTime = (Math.random() * 500) + 500
+      const responseTime = (Math.random() * 500) + this.responseTimeComputerLevel
       setTimeout(() => {super.throwDisc()}, responseTime)
       console.log(`disc${this.id}`)
     }
@@ -32,7 +34,7 @@ class PlayerComputer extends Player {
       this._throwDisc()
       return
     }
-    const error = (Math.random() * 1) - ERROR_DISC_COMPUTER
+    const error = (Math.random() * 1) - this.errorDiscComputerLevel
     if (error < 0) {
       this._throwDisc()
       return

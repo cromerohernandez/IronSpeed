@@ -70,6 +70,16 @@ h3 {
   flex-direction: column;
 }
 
+.menu-selectHumanPlayers {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-selectComputerLevel {
+  display: flex;
+  flex-direction: column;
+}
+
 .menu-schema {
   flex-direction: column;
 }
@@ -133,14 +143,9 @@ h3 {
   background-size: cover;
 }
 
-.menu-selectHumanPlayers {
-  display: flex;
-  flex-direction: column;
-}
-
-#panel-HumanPlayersButtons {
+#panel-optionsButtons {
   flex-direction: row;
-  margin: 1vh 0 3vh 0
+  margin: 0 0 4vh 0
 }
 
 .instructions-button {
