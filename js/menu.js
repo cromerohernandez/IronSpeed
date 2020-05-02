@@ -357,4 +357,34 @@ class Menu {
     this.board()
     game.start(2, levelComputer)
   }
+
+  alertScreen() {
+    let canvas = document.getElementById('my-canvas')
+    let menu = document.getElementById('menu')
+
+    this.body.removeChild(canvas)
+    this.body.removeChild(menu)
+
+    let messageViewer = document.getElementById('messageViewer')
+    messageViewer.setAttribute('id', 'alertMessage')
+
+    let logoMenu = document.createElement('img')
+    logoMenu.setAttribute('id', 'logo-alert')
+    logoMenu.setAttribute('src', 'images/IronSpeed-LogoLineLight.png')
+    logoMenu.setAttribute('alt', 'logoMenu')
+
+    let alertMessageTitle = document.createElement('h1')
+    alertMessageTitle.innerText = "Sorry!"
+
+    let alertMessage1 = document.createElement('h1')
+    alertMessage1.innerText = "IronSpeed ​​is not yet available for mobile and tablets."
+
+    let alertMessage2 = document.createElement('h1')
+    alertMessage2.innerText = "You can play on your computer."
+
+    messageViewer.appendChild(logoMenu)
+    messageViewer.appendChild(alertMessageTitle)
+    messageViewer.appendChild(alertMessage1)
+    messageViewer.appendChild(alertMessage2)
+  }
 }

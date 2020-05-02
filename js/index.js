@@ -6,3 +6,7 @@ canvas.width = window.innerHeight
 const ctx = canvas.getContext("2d")
 
 const game = new Game(ctx)
+
+if (window.innerWidth < 1024) {
+  menu.alertScreen()
+}
