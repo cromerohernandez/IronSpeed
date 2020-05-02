@@ -18,17 +18,6 @@ class IronSpeed {
     this.upground = new Upground(ctx, this)
   }
 
-
-  /*start() {
-    setTimeout(() => {this.dealCards()}, 5000)
-    let messageDeal = new Message ('Dealt cards', 2000)
-    setTimeout(() => {messageDeal.showMessage()}, 5000)
-    let messageStart = new Message ('Start PLAYER1', 2000)
-    setTimeout(() => {messageStart.showMessage()}, 7000)
-    setTimeout(() => {this.setStartTurn()}, 9000)
-  }*/
-
-
   setStartTurn() {
     this.turn = 1
     this.playCardNextComputerPlayer()
@@ -226,7 +215,7 @@ class IronSpeed {
       this.turn = null
       winners.forEach(winner => console.log(`player${winner} wins`))
       for (let i = 0; i < winners.length; i++){
-        let messageChampion = new Message (`PLAYER${winners[i]} wins!`, 10000, 'winner', winners[i])
+        let messageChampion = new Message (`PLAYER${winners[i]} wins!`, 30000, 'winner', winners[i])
         setTimeout(() => {messageChampion.showMessage()}, 2000)
       }
     }
@@ -242,8 +231,8 @@ class IronSpeed {
     if (this.turn === null) {
       return
     } else {
-      console.log(`PLAYER${this.turn} it´s your turn`)
-      let messageTurn = new Message (`PLAYER${this.turn} it´s your turn`, 1500)
+      console.log(`PLAYER${this.turn} it's your turn`)
+      let messageTurn = new Message (`PLAYER${this.turn} it's your turn`, 1500)
       setTimeout(() => {messageTurn.showMessage()}, 2000)
       setTimeout(() => {this.playCardNextComputerPlayer()}, 4000)
     }
@@ -276,8 +265,8 @@ class IronSpeed {
     if (this.turn === null) {
       return
     } else {
-      console.log(`PLAYER${this.turn} it´s your turn`)
-      let messageTurn = new Message (`PLAYER${this.turn} it´s your turn`, 1500)
+      console.log(`PLAYER${this.turn} it's your turn`)
+      let messageTurn = new Message (`PLAYER${this.turn} it's your turn`, 1500)
       setTimeout(() => {messageTurn.showMessage()}, 3500)
       this.playCardNextComputerPlayer()
     }

@@ -41,14 +41,14 @@ class Player {
         }
       }
     } else {
-      console.log(`PLAYER${this.id} it´s not your turn`)
-      console.log(`PLAYER${this.game.turn} it´s your turn`)
+      console.log(`PLAYER${this.id} it's not your turn`)
+      console.log(`PLAYER${this.game.turn} it's your turn`)
     }
   }
 
   throwDisc(){
     if ((this.centerCards.length === 0 && this.game.turn !== 'discTurn')|| this.game.turn === null) {
-      console.log(`PLAYER${this.id} can´t throw the disc now`)
+      console.log(`PLAYER${this.id} can't throw the disc now`)
       return
     }
     if (!this.game.orderDiscs.includes(this.id)) {

@@ -23,7 +23,7 @@ h1 {
 
 h2 {
   margin: 0.9vh 0;
-  font-size: 2vh;
+  font-size: 1.9vh;
   font-weight: 600;
   color: #a3b9c2;
 }
@@ -70,6 +70,10 @@ h3 {
   flex-direction: column;
 }
 
+.menu-schema {
+  flex-direction: column;
+}
+
 #logo-menu {
   width: 30vh;
   height: 30vh;
@@ -110,6 +114,35 @@ h3 {
   background-size: cover;
 }
 
+#button-panel {
+  display: flex;
+  flex-direction: row;
+}
+
+#schema {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#board-schema {
+  height: 30vh;
+  width: 30vh;
+  margin: 3vh 5vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menu-selectHumanPlayers {
+  display: flex;
+  flex-direction: column;
+}
+
+#panel-HumanPlayersButtons {
+  flex-direction: row;
+  margin: 1vh 0 3vh 0
+}
+
 .instructions-button {
   background: url('../images/MenuInstructionsIcon.png');
 }
@@ -130,34 +163,33 @@ h3 {
   background: url('../images/MenuTwoHumanPlayersIcon.png');
 }
 
+.level1Computer-button {
+  background: url('../images/MenuLevel1ComputerIcon.png');
+}
 
+.level2Computer-button {
+  background: url('../images/MenuLevel2ComputerIcon.png');
+}
 
-
-
-
-
-#controls {
-  display: flex;
-  justify-content: center;
+.level3Computer-button {
+  background: url('../images/MenuLevel3ComputerIcon.png');
 }
 
 #controls-player {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 7vh
+  justify-content: center;
 }
 
 #keys-player {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  margin: 0 5vh
+  margin: 0
 }
 
 #key {
   display: flex;
   align-items: center;
+  margin: 1vh 0
 }
 
 #key-img {
