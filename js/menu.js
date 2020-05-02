@@ -375,12 +375,15 @@ class Menu {
 
     let alertMessageTitle = document.createElement('h1')
     alertMessageTitle.innerText = "Sorry!"
+    alertMessageTitle.setAttribute('class', 'alertText')
 
     let alertMessage1 = document.createElement('h1')
     alertMessage1.innerText = "IronSpeed ​​is not yet available for mobile and tablets."
+    alertMessage1.setAttribute('class', 'alertText')
 
     let alertMessage2 = document.createElement('h1')
     alertMessage2.innerText = "You can play on your computer."
+    alertMessage2.setAttribute('class', 'alertText')
 
     messageViewer.appendChild(logoMenu)
     messageViewer.appendChild(alertMessageTitle)

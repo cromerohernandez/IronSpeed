@@ -401,3 +401,8 @@ h3 {
   height: 25vh;
   margin: 5vh
 }
+
+.alertText {
+  padding: 0 2vh;
+  text-align: center;
+}
