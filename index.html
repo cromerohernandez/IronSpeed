@@ -8,35 +8,21 @@
   <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body>
-  <div id="board">
-    <div id="board-top">
-      <div id="cardCenter4">
-        <h3 id="counterCards4">0</h3>
-      </div>
+  <div id="return-home"></div>
+  <div id="preBoard"></div>
+  <div id="messageViewer"></div>
+  <canvas id="my-canvas"></canvas>
+  <div id="menu">
+    <div id="menu-top">
+      <img src="images/IronSpeed-LogoLineLight.png" id="logo-menu">
     </div>
-    <div id="board-middle">
-      <div id="board-left">
-        <div id="cardCenter1">
-          <h3 id="counterCards1">0</h3>
-        </div>
-      </div>
-      <div id="board-center">
-        <img src="images/IronSpeed-LogoLine.png" alt="IronSpeedLogoLine" id="logo-center">
-      </div>
-      <div id="board-right">
-        <div id="cardCenter3">
-          <h3 id="counterCards3">0</h3>
-        </div>
-      </div> 
+    <div id="menu-center" class="menu-home">
+      <button onclick="menu.instructions()" id="menu-button" class="instructions-button"></button>
+      <button onclick="menu.selectComputerLevel()" id="menu-button" class="play-button"></button>
     </div>
-    <div id="board-bottom">
-      <div id="cardCenter2">
-        <h3 id="counterCards2">0</h3>
-      </div>
-    </div>
-    <canvas id="my-canvas"></canvas>
-    <div id="screen"></div>
+    <div id="menu-bottom"></div>
   </div>
+
   <script src="js/const.js"></script>
   <script src="js/message.js"></script>
   <script src="js/deck.js"></script>
@@ -46,6 +32,8 @@
   <script src="js/playerComputer.js"></script>
   <script src="js/upground.js"></script>
   <script src="js/ironSpeed.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/game.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

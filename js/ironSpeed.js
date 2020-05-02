@@ -1,10 +1,16 @@
 class IronSpeed {
-  constructor(ctx) {
+  constructor(ctx, humanPlayers, responseTimeComputerLevel, errorDiscComputerLevel) {
     this.deck = deck
-    this.player1 = new PlayerHuman(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, Z_KEY, X_KEY,)
-    this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this)
-    this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
-    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*10/13), 1, this)
+    if (humanPlayers === 1) {
+      this.player1 = new PlayerComputer(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, responseTimeComputerLevel, errorDiscComputerLevel)
+      this.player2 = new PlayerHuman(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+      this.player3 = new PlayerComputer(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, responseTimeComputerLevel, errorDiscComputerLevel)
+    } else if (humanPlayers === 2) {
+      this.player1 = new PlayerHuman(1, -(DISC_SIZE*10/13), 1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, Z_KEY, X_KEY,)
+      this.player2 = new PlayerComputer(2, (window.innerHeight/2 - DISC_SIZE/2), 0, (window.innerHeight - DISC_SIZE*3/13), -1, this, responseTimeComputerLevel, errorDiscComputerLevel)
+      this.player3 = new PlayerHuman(3, (window.innerHeight - DISC_SIZE*3/13), -1, (window.innerHeight/2 - DISC_SIZE/2), 0, this, ARROWDOWN_KEY, ARROWRIGHT_KEY)
+    } 
+    this.player4 = new PlayerComputer(4, (window.innerHeight/2 - DISC_SIZE/2), 0, -(DISC_SIZE*10/13), 1, this, responseTimeComputerLevel, errorDiscComputerLevel)
     this.players = [this.player1, this.player2, this.player3, this.player4]
     this.turn = 0
     this.orderDiscs = []
@@ -14,6 +20,7 @@ class IronSpeed {
 
   setStartTurn() {
     this.turn = 1
+    this.playCardNextComputerPlayer()
   }
   
   _updateAllCurrentsCards() {
@@ -72,13 +79,16 @@ class IronSpeed {
         playersCheck.push(this.players[i])
       }
     }
+    let possibleColor = false
     for (let i = 0; i < playersCheck.length; i++) {
       if (playersCheck[i].centerCards[0].type === 'disc') {
         this.turn = 'discTurn'
         return
       } else if (playersCheck[i].centerCards[0].type === 'color') {
         this.propCheck = 'color'
-        return
+        possibleColor = true
+      } else if (playersCheck[i].centerCards[0].type === 'normal' && possibleColor === true)  {
+        continue
       } else {
         this.propCheck = 'form'
       }
@@ -108,7 +118,7 @@ class IronSpeed {
   }
 
   playCardNextComputerPlayer() {
-    if (this.players[this.turn-1].typePlayer === 'computer') {
+    if (this.players[this.turn-1].typePlayer && this.players[this.turn-1].typePlayer === 'computer') {
       this.players[this.turn-1].throwCard()
     }
   }
@@ -176,8 +186,8 @@ class IronSpeed {
         let j = losersPlayers[i]
         this._addCardsLoser(j, j)
       }
-      console.log(`${prop}´s duel | PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the duel`)
-      let messageWin = new Message (`PLAYER${id} wins the duel`, 2000)
+      console.log(`${prop} duel | PLAYER${id} vs PLAYERS:${losersPlayers} | PLAYER${id} wins the ${prop} duel`)
+      let messageWin = new Message (`PLAYER${id} wins the ${prop} duel`, 2000)
       messageWin.showMessage()      
       let nextTurn = id
       for (let i = 0; i <= this.players.length; i++) {
@@ -205,7 +215,7 @@ class IronSpeed {
       this.turn = null
       winners.forEach(winner => console.log(`player${winner} wins`))
       for (let i = 0; i < winners.length; i++){
-        let messageChampion = new Message (`PLAYER${winners[i]} is the CHAMPION!`, 10000)
+        let messageChampion = new Message (`PLAYER${winners[i]} wins!`, 30000, 'winner', winners[i])
         setTimeout(() => {messageChampion.showMessage()}, 2000)
       }
     }
@@ -221,8 +231,8 @@ class IronSpeed {
     if (this.turn === null) {
       return
     } else {
-      console.log(`PLAYER${this.turn} it´s your turn`)
-      let messageTurn = new Message (`PLAYER${this.turn} it´s your turn`, 1500)
+      console.log(`PLAYER${this.turn} it's your turn`)
+      let messageTurn = new Message (`PLAYER${this.turn} it's your turn`, 1500)
       setTimeout(() => {messageTurn.showMessage()}, 2000)
       setTimeout(() => {this.playCardNextComputerPlayer()}, 4000)
     }
@@ -255,8 +265,8 @@ class IronSpeed {
     if (this.turn === null) {
       return
     } else {
-      console.log(`PLAYER${this.turn} it´s your turn`)
-      let messageTurn = new Message (`PLAYER${this.turn} it´s your turn`, 1500)
+      console.log(`PLAYER${this.turn} it's your turn`)
+      let messageTurn = new Message (`PLAYER${this.turn} it's your turn`, 1500)
       setTimeout(() => {messageTurn.showMessage()}, 3500)
       this.playCardNextComputerPlayer()
     }

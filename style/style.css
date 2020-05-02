@@ -15,9 +15,209 @@ body {
   background-position: center;
 }
 
+h1 {
+  font-size: 2.5vh;
+  font-weight: bold;
+  color: #a3b9c2;
+}
+
+h2 {
+  margin: 0.9vh 0;
+  font-size: 1.9vh;
+  font-weight: 600;
+  color: #a3b9c2;
+}
+
+h3 {
+  font-size: 1.8vh;
+  color: #4c7282;
+  opacity: 0.7;
+}
+
+/*MENU*/
+
+#menu {
+  height: 100vh;
+  width: 100vh;
+  min-width: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#menu-top {
+  height: 42vh;
+  padding-bottom: 3vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center
+}
+
+#menu-center {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+#menu-bottom {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.menu-home {
+  flex-direction: row;
+}
+
+.menu-instructions {
+  flex-direction: column;
+}
+
+.menu-selectHumanPlayers {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-selectComputerLevel {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-schema {
+  flex-direction: column;
+}
+
+#logo-menu {
+  width: 30vh;
+  height: 30vh;
+}
+
+#instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center
+}
+
+#instructions-title {
+  margin: 0.9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+#specialCard-instruction {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start
+}
+
+#specialCard-instruction-img {
+  height: 7vh;
+  width: 7vh;
+  margin: 1vh 2vh 1vh 0
+}
+
+#menu-button {
+  height: 6vh;
+  width: 6vh;
+  margin: 2vh 3vh;
+  border: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#button-panel {
+  display: flex;
+  flex-direction: row;
+}
+
+#schema {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#board-schema {
+  height: 30vh;
+  width: 30vh;
+  margin: 3vh 5vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#panel-optionsButtons {
+  flex-direction: row;
+  margin: 0 0 4vh 0
+}
+
+.instructions-button {
+  background: url('../images/MenuInstructionsIcon.png');
+}
+
+.play-button {
+  background: url('../images/MenuPlayIcon.png');
+}
+
+.back-button {
+  background: url('../images/MenuBackIcon.png');
+}
+
+.oneHumanPlayers-button {
+  background: url('../images/MenuOneHumanPlayerIcon.png');
+}
+
+.twoHumanPlayers-button {
+  background: url('../images/MenuTwoHumanPlayersIcon.png');
+}
+
+.level1Computer-button {
+  background: url('../images/MenuLevel1ComputerIcon.png');
+}
+
+.level2Computer-button {
+  background: url('../images/MenuLevel2ComputerIcon.png');
+}
+
+.level3Computer-button {
+  background: url('../images/MenuLevel3ComputerIcon.png');
+}
+
+.home-button {
+  background: url('../images/MenuHomeIcon.png');
+}
+
+#controls-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#keys-player {
+  justify-content: center;
+  margin: 0
+}
+
+#key {
+  display: flex;
+  align-items: center;
+  margin: 1vh 0
+}
+
+#key-img {
+  height: 5vh;
+  width: 5vh;
+  margin-right: 2vh
+}
+
+/*BOARD*/
+
 #board {
   height: 100vh;
-  min-height: 500px;
   width: 100vh;
   min-width: 500px;
   position: relative;
@@ -38,18 +238,6 @@ body {
   justify-content: space-between;
 }
 
-#cardCenter4 {
-  background: url('../images/CardMark.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 20vh;
-  width: 20vh;
-  margin-top: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #board-middle {
   height: 50%;
   width: 100%;
@@ -64,18 +252,6 @@ body {
   justify-content: space-between;
 }
 
-#cardCenter1 {
-  background: url('../images/CardMark.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 20vh;
-  width: 20vh;
-  margin-left: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #board-center {
   width: 50%;
   display: flex;
@@ -83,27 +259,11 @@ body {
   justify-content: center;
 }
 
-#logo-center {
-  width: 20vh;
-}
-
 #board-right {
   width: 25%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-#cardCenter3 {
-  background: url('../images/CardMark.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 20vh;
-  width: 20vh;
-  margin-right: 5vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #board-bottom {
@@ -115,8 +275,20 @@ body {
   justify-content: space-between;
 }
 
-#my-canvas {
-  position: absolute;
+#logo-center {
+  width: 20vh;
+}
+
+#cardCenter1 {
+  background: url('../images/CardMark.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+  margin-left: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #cardCenter2 {
@@ -131,6 +303,34 @@ body {
   justify-content: center;
 }
 
+#cardCenter3 {
+  background: url('../images/CardMark.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+  margin-right: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cardCenter4 {
+  background: url('../images/CardMark.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  width: 20vh;
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#my-canvas {
+  position: absolute;
+}
+
 #start {
   height: 100vh;
   width: 100vh;
@@ -143,7 +343,7 @@ body {
   justify-content: center;
 }
 
-#screen {
+#messageViewer {
   height: 100vh;
   width: 100vh;
   position: absolute;
@@ -159,8 +359,14 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#imgWinner {
+  height: 6.5vh;
+  width: 6.5vh;
 }
 
 #message {
@@ -170,8 +376,33 @@ body {
   margin: 0
 }
 
-h3 {
-  font-size: 1.8vh;
-  color: #4c7282;
-  opacity: 0.7;
+#return-home {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/*ALERT SCREEN*/
+
+#alertMessage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-alert {
+  width: 25vh;
+  height: 25vh;
+  margin: 5vh
+}
+
+.alertText {
+  padding: 0 2vh;
+  text-align: center;
 }
