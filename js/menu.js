@@ -60,7 +60,7 @@ class Menu {
     const instructionSpecialDiscs = "<div id='specialCard-instruction'> <img/ src='images/SpecialDiscs.png' id='specialCard-instruction-img'> <h2>All players must throw the disc. The slowest player must take all the cards currently in play.</h2> </div>"
     instructions.innerHTML = (instruction1 + instruction2 + instruction3 + instructionSpecialColors + instructionSpecialDiscs)
     let instructionWinner = document.createElement('h2')
-    instructionWinner.innerText = "If you are the first to get rid of all your cards... ¡ YOU WIN !"
+    instructionWinner.innerText = "If you are the first to get rid of all your cards . . . YOU WIN !"
 
     menuCenter.appendChild(instructionsTitle)
     menuCenter.appendChild(instructions)
