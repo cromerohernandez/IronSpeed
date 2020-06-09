@@ -95,18 +95,20 @@ class IronSpeed {
     }
   }
 
+  _checkNextTurn() {
+    if (this.players[this.turn - 1].playerCards.length === 0) {
+      this.incrementTurn()
+    }
+  }
+
   incrementTurn() {
     if (this.turn === this.players.length) {
       this.turn = 1
     } else {
     this.turn ++
     }
-  }
 
-  checkNextTurn() {
-    if (this.players[this.turn - 1].playerCards.length === 0) {
-      this.incrementTurn()
-    }
+    this._checkNextTurn()
   }
 
   playDiscsComputersPlayers() {

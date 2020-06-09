@@ -34,7 +34,6 @@ class Player {
         setTimeout(() => {this.game.duelDiscs()}, 3000)
       } else {
         this.game.incrementTurn()
-        this.game.checkNextTurn()
         this.game.playDiscsComputersPlayers()
         if (this.game.orderDiscs.length === 0) {
           this.game.playCardNextComputerPlayer()
